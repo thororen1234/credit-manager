@@ -49,7 +49,7 @@ At high concurrency, a host's upstream credentials, frontend `api-keys`, and usa
 - Operate Keys, prices, usage analytics, audits, and auth quotas through the management console and API. Key holders have a separate self-service page.
 - Inspect upstream quota windows for Codex, Claude, Antigravity, Kimi, and xAI OAuth credentials, and set per-auth concurrency limits.
 
-> When enabled, the plugin owns frontend authentication for proxied model requests. Existing CLIProxyAPI `api-keys` no longer authenticate model calls; clients must use the full issued `tk-...` Key.
+> The plugin authenticates, meters, and settles issued `tk-...` Keys; existing host `api-keys` remain usable for unmetered model requests. When using a plugin Key:
 
 ```text
 Authorization: Bearer tk-...

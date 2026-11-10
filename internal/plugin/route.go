@@ -1,6 +1,7 @@
 package plugin
 
 import (
+	"context"
 	"encoding/json"
 	"strings"
 
@@ -14,28 +15,20 @@ func routeModel(raw []byte) ([]byte, error) {
 	if err := json.Unmarshal(raw, &req); err != nil {
 		return nil, err
 	}
-	// Host HostModelExecute rejects image-only models. Let the native
-	// /v1/images/* path run; interceptors reserve and settle instead.
 	if isNativeImageProtocol(req.SourceFormat) || isImageOnlyModel(req.RequestedModel) {
 		return okEnvelope(pluginapi.ModelRouteResponse{Handled: false, Reason: "native_image_protocol"})
 	}
-	// Only handle authenticated plugin-key traffic; exclusive auth already rejected others.
-	scope := metadataString(req.Metadata, service.CallerScopeMetadataKey)
-	if scope == "" && bearerPresent(req.Headers) {
-		// Host may not yet inject caller_scope into router metadata; still claim authenticated Bearer traffic.
-		return okEnvelope(pluginapi.ModelRouteResponse{
-			Handled:    true,
-			TargetKind: pluginapi.ModelRouteTargetSelf,
-			Reason:     "credit_manager_authenticated",
-		})
+	svc := service.Current()
+	if svc == nil {
+		return okEnvelope(pluginapi.ModelRouteResponse{Handled: false})
 	}
-	if scope == "" {
+	if _, _, err := svc.ResolveIdentity(context.Background(), req.Headers, req.Metadata); err != nil {
 		return okEnvelope(pluginapi.ModelRouteResponse{Handled: false})
 	}
 	return okEnvelope(pluginapi.ModelRouteResponse{
 		Handled:    true,
 		TargetKind: pluginapi.ModelRouteTargetSelf,
-		Reason:     "credit_manager_caller_scope",
+		Reason:     "credit_manager_authenticated",
 	})
 }
 

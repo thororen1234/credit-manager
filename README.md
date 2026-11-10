@@ -49,7 +49,7 @@
 - 提供管理控制台、管理 API、审计和使用统计；Key 持有人还可在独立页面查询自己的额度与明细。
 - 汇总 Codex、Claude、Antigravity、Kimi、xAI OAuth 认证的上游额度窗口，并可按认证限制最大并发。
 
-> 启用后，插件接管模型代理请求的前端鉴权。原有 CLIProxyAPI `api-keys` 不能再用于模型调用；客户端必须携带签发出的完整 `tk-...` Key。
+> 插件为签发的 `tk-...` Key 提供鉴权、限额和结算；宿主原有的 `api-keys` 仍可继续用于非计费的模型调用。使用插件 Key 时：
 
 ```text
 Authorization: Bearer tk-...

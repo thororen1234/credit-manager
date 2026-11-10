@@ -84,8 +84,7 @@ func interceptRequestAfterAuth(raw []byte) ([]byte, error) {
 		return okEnvelope(pluginapi.RequestInterceptResponse{})
 	}
 	if err != nil {
-		// No attributable plugin key — cannot write usage_ledger.
-		return okEnvelope(quotaRejectResponse(http.StatusUnauthorized, err.Error()))
+		return okEnvelope(pluginapi.RequestInterceptResponse{})
 	}
 	modelName := firstNonEmpty(req.RequestedModel, req.Model)
 	plan, err := svc.BuildReservePlan(ctx, modelName, req.Body)
