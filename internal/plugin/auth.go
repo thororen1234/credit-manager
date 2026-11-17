@@ -24,17 +24,18 @@ func authenticate(raw []byte) ([]byte, error) {
 		return okEnvelope(pluginapi.FrontendAuthResponse{Authenticated: false})
 	}
 	// CLIProxyAPI's management center queries the read-only model directory
-	// without a client Key. Keep model execution exclusively Key-authenticated.
-	// Globally disabled models are stripped by the response interceptor; Key
-	// allowlists are enforced at reserve/execute time.
+	// without a client Key. Keep that anonymous. A verified Key does not change
+	// the auth result; the response interceptor trims the catalog to what that
+	// Key can call. Model execution stays exclusively Key-authenticated.
 	if publicModelDirectoryRequest(req.Method, req.Path) {
+		noteModelDirectoryAuth(req)
 		return okEnvelope(pluginapi.FrontendAuthResponse{
 			Authenticated: true,
 			Principal:     "credit-manager:model-directory",
 			Metadata:      map[string]string{"plugin": service.PluginID, "public_models": "true"},
 		})
 	}
-	principal, meta, ok := svc.Authenticate(context.Background(), req.Headers)
+	principal, meta, ok := svc.Authenticate(context.Background(), req.Headers, req.Query, req.Path)
 	if !ok {
 		return okEnvelope(pluginapi.FrontendAuthResponse{Authenticated: false})
 	}
@@ -49,7 +50,11 @@ func publicModelDirectoryRequest(method, path string) bool {
 	if !strings.EqualFold(strings.TrimSpace(method), http.MethodGet) {
 		return false
 	}
-	switch strings.TrimRight(strings.TrimSpace(path), "/") {
+	path = strings.TrimSpace(path)
+	if i := strings.IndexByte(path, '?'); i >= 0 {
+		path = path[:i]
+	}
+	switch strings.TrimRight(path, "/") {
 	case "/v1/models", "/v1beta/models":
 		return true
 	default:
@@ -71,7 +76,7 @@ func interceptRequestAfterAuth(raw []byte) ([]byte, error) {
 		return okEnvelope(pluginapi.RequestInterceptResponse{})
 	}
 	ctx := context.Background()
-	key, _, err := svc.ResolveIdentity(ctx, req.Headers, req.Metadata)
+	key, _, err := svc.ResolveIdentity(ctx, req.Headers, nil, req.Metadata)
 	if !isNativeImageProtocol(req.SourceFormat) && !isImageOnlyModel(firstNonEmpty(req.RequestedModel, req.Model)) {
 		// CPA invokes this hook before its executor. Carry the lifecycle request ID
 		// into our executor, then remove it before the nested host model call.
@@ -168,7 +173,11 @@ func interceptModelDirectoryResponse(raw []byte) ([]byte, error) {
 	if err := json.Unmarshal(raw, &req); err != nil {
 		return nil, err
 	}
-	filtered, changed, err := svc.FilterModelDirectory(context.Background(), req.Body)
+	if !service.IsModelDirectoryBody(req.Body) {
+		return okEnvelope(pluginapi.ResponseInterceptResponse{})
+	}
+	key := modelDirectoryKey(context.Background(), req.RequestHeaders)
+	filtered, changed, err := svc.FilterModelDirectoryForKey(context.Background(), req.Body, key)
 	if err != nil {
 		return nil, err
 	}

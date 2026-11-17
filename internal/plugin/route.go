@@ -22,7 +22,7 @@ func routeModel(raw []byte) ([]byte, error) {
 	if svc == nil {
 		return okEnvelope(pluginapi.ModelRouteResponse{Handled: false})
 	}
-	if _, _, err := svc.ResolveIdentity(context.Background(), req.Headers, req.Metadata); err != nil {
+	if _, _, err := svc.ResolveIdentity(context.Background(), req.Headers, req.Query, req.Metadata); err != nil {
 		return okEnvelope(pluginapi.ModelRouteResponse{Handled: false})
 	}
 	return okEnvelope(pluginapi.ModelRouteResponse{
