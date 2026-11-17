@@ -236,7 +236,7 @@ func normalizeAuthWarmupSchedule(schedule AuthWarmupSchedule) AuthWarmupSchedule
 	}
 	schedule.Name = strings.TrimSpace(schedule.Name)
 	if schedule.Name == "" {
-		schedule.Name = "预热任务"
+		schedule.Name = "Warmup task"
 	}
 	if strings.TrimSpace(schedule.Timezone) == "" {
 		schedule.Timezone = "Asia/Shanghai"

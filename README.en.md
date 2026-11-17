@@ -219,6 +219,8 @@ A Key can apply hard total, daily, weekly, and monthly Token caps to exact model
 
 An exact model name wins. If several globs match, the longest pattern wins. Token caps are checked during reservation, using both settled tokens and in-flight estimates. Resetting total Token spend starts a new total count from the reset time.
 
+Each period also takes an optional `micro_usd` spend cap for the matched models, for example `{"model": "claude-*", "total": {"micro_usd": 1000000000}}` caps all Claude models at $1000 while a `gemini-*` row with all zeros stays unlimited. `0` means no cap. Settled cost and in-flight holds both count.
+
 ### Pricing rules
 
 Text prices are integer **micro-USD per 1M Tokens**. Image-only models use `billing_mode: "per_image"`; `per_image` is the micro-USD price per image.

@@ -423,3 +423,4 @@ html[data-palette="dark"] .custom-date-footer button:hover { background:#37322d;
 }
 
 .brand-mark img, .login-mark img { border-radius:22%; object-fit:cover; }
+html:not(:lang(zh)) [data-token-unit="qian"], html:not(:lang(zh)) [data-token-unit="wan"], html:not(:lang(zh)) [data-token-unit="baiwan"] { display:none; }

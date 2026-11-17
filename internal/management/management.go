@@ -64,7 +64,7 @@ func Resources() []pluginapi.ResourceRoute {
 	return []pluginapi.ResourceRoute{
 		{
 			Path:        "/console",
-			Menu:        "CPA 额度管理",
+			Menu:        "CPA Credit Manager",
 			Description: "Key / 模型 / 限额 / 使用统计可视化管理",
 		},
 		{

@@ -115,6 +115,53 @@ func TestReserveEnforcesTotalModelTokenLimit(t *testing.T) {
 	}
 }
 
+func TestReserveEnforcesModelSpendLimit(t *testing.T) {
+	ctx := context.Background()
+	st := newTestStore(t)
+	defer st.Close()
+	key := newTestKey(t, ctx, st, PluginKeySpec{
+		ModelTokenLimits: []ModelTokenLimit{
+			{Model: "claude-*", Total: ModelPeriodTokenLimit{MicroUSD: 100}},
+			{Model: "gemini-*"},
+		},
+		UnmatchedModelsMode: UnmatchedModelsDisabled,
+	})
+	first := reserveRequest(key, "first", 60)
+	first.Model = "claude-sonnet"
+	firstReservation, err := st.Reserve(ctx, first)
+	if err != nil {
+		t.Fatalf("first reserve: %v", err)
+	}
+	if _, err := st.Settle(ctx, Settlement{
+		LedgerID: NewID(), ReservationID: firstReservation.ID, Model: firstReservation.Model,
+		Usage: money.TokenUsage{Input: 1}, CostMicroUSD: 70, EstimatedCostMicroUSD: 70, Source: "usage",
+	}); err != nil {
+		t.Fatalf("settle first reserve: %v", err)
+	}
+	held := reserveRequest(key, "held", 20)
+	held.Model = "claude-opus"
+	if _, err := st.Reserve(ctx, held); err != nil {
+		t.Fatalf("held reserve: %v", err)
+	}
+	over := reserveRequest(key, "over", 20)
+	over.Model = "claude-haiku"
+	if _, err := st.Reserve(ctx, over); !errors.Is(err, ErrTotalModelSpendExceeded) {
+		t.Fatalf("over reserve error = %v, want %v", err, ErrTotalModelSpendExceeded)
+	}
+	gemini := reserveRequest(key, "gemini", 1_000_000)
+	gemini.Model = "gemini-pro"
+	if _, err := st.Reserve(ctx, gemini); err != nil {
+		t.Fatalf("gemini reserve should be unlimited: %v", err)
+	}
+	usage, err := st.ListModelTokenUsage(ctx, key.ID, key.ModelTokenLimits, time.Now().UnixMilli())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(usage) != 2 || usage[0].TotalSpent != 90 || usage[0].Total.MicroUSD != 100 {
+		t.Fatalf("usage = %#v", usage)
+	}
+}
+
 func TestReserveModelTokenLimitAvailableOrUnlimitedSkipsCap(t *testing.T) {
 	for _, mode := range []string{ModelTokenLimitModeAvailable, ModelTokenLimitModeUnlimited} {
 		t.Run(mode, func(t *testing.T) {

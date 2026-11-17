@@ -124,7 +124,7 @@ func (s *Store) Reserve(ctx context.Context, request ReserveRequest) (Reservatio
 	}
 
 	now := nowUnixMilli()
-	if err := enforceModelTokenLimits(ctx, tx, request.PluginKeyID, request.Model, request.RequestTokenEstimate, tokenLimits, unmatchedMode, now); err != nil {
+	if err := enforceModelTokenLimits(ctx, tx, request.PluginKeyID, request.Model, request.RequestTokenEstimate, request.AmountMicroUSD, tokenLimits, unmatchedMode, now); err != nil {
 		return Reservation{}, err
 	}
 	if maxConcurrent > 0 {

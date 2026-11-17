@@ -37,6 +37,10 @@ var (
 	ErrWeeklyTokenLimitExceeded  = errors.New("weekly model token limit exceeded")
 	ErrMonthlyTokenLimitExceeded = errors.New("monthly model token limit exceeded")
 	ErrTotalTokenLimitExceeded   = errors.New("total model token limit exceeded")
+	ErrDailyModelSpendExceeded   = errors.New("daily model spend limit exceeded")
+	ErrWeeklyModelSpendExceeded  = errors.New("weekly model spend limit exceeded")
+	ErrMonthlyModelSpendExceeded = errors.New("monthly model spend limit exceeded")
+	ErrTotalModelSpendExceeded   = errors.New("total model spend limit exceeded")
 	ErrConcurrentLimit           = errors.New("maximum concurrent requests reached")
 )
 

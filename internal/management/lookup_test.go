@@ -279,7 +279,7 @@ func TestLookupPathRecognition(t *testing.T) {
 func TestConsoleTokenUnitsUseChineseLabels(t *testing.T) {
 	page := string(consolePage().Body)
 	for _, text := range []string{
-		`data-token-unit="raw" title="原始数量" data-no-i18n>个`,
+		`data-token-unit="raw" title="原始数量">个`,
 		`data-token-unit="qian" title="千 (×1,000)" data-no-i18n>千`,
 		`data-token-unit="k" title="k (×1,000)" data-no-i18n>k`,
 		`data-token-unit="wan" title="万 (×10,000)" data-no-i18n>万`,

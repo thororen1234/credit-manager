@@ -226,7 +226,7 @@ func (s *Service) WarmupAuthQuota(ctx context.Context, provider, authID, authInd
 	if len(models) == 0 {
 		return AuthQuotaOverviewItem{}, errors.New("manual warmup requires at least one model supported by this auth file")
 	}
-	schedule := store.AuthWarmupSchedule{ID: "manual", Name: "立即预热", Auths: []store.AuthWarmupAuthTarget{{Provider: provider, AuthID: authID, AuthIndex: authIndex}}, Models: models}
+	schedule := store.AuthWarmupSchedule{ID: "manual", Name: "Manual warmup", Auths: []store.AuthWarmupAuthTarget{{Provider: provider, AuthID: authID, AuthIndex: authIndex}}, Models: models}
 	// A manual button press is explicit operator intent. Unlike scheduled work,
 	// it must not be suppressed by the day's prior manual warmup record.
 	return s.warmupAuthQuota(ctx, "", provider, authID, authIndex, "manual:"+newAuthWarmupID(), schedule)

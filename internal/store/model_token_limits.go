@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"path/filepath"
 	"strings"
+
+	"github.com/yuluo688/credit-manager/internal/money"
 )
 
 const (
@@ -22,13 +24,21 @@ const (
 //   - unlimited: no token cap
 //   - available: model remains usable with no token cap for this period
 type ModelPeriodTokenLimit struct {
-	Tokens int64  `json:"tokens"`
-	Mode   string `json:"mode"`
+	Tokens   int64          `json:"tokens"`
+	Mode     string         `json:"mode"`
+	MicroUSD money.MicroUSD `json:"micro_usd"`
 }
 
 func (p ModelPeriodTokenLimit) Cap() int64 {
 	if p.Tokens > 0 {
 		return p.Tokens
+	}
+	return 0
+}
+
+func (p ModelPeriodTokenLimit) SpendCap() money.MicroUSD {
+	if p.MicroUSD > 0 {
+		return p.MicroUSD
 	}
 	return 0
 }
@@ -59,6 +69,11 @@ type ModelTokenUsage struct {
 	DailyUsed   int64                 `json:"daily_used"`
 	WeeklyUsed  int64                 `json:"weekly_used"`
 	MonthlyUsed int64                 `json:"monthly_used"`
+
+	TotalSpent   money.MicroUSD `json:"total_spent_micro_usd"`
+	DailySpent   money.MicroUSD `json:"daily_spent_micro_usd"`
+	WeeklySpent  money.MicroUSD `json:"weekly_spent_micro_usd"`
+	MonthlySpent money.MicroUSD `json:"monthly_spent_micro_usd"`
 }
 
 type tokenQueryer interface {
@@ -67,7 +82,7 @@ type tokenQueryer interface {
 }
 
 func (p ModelPeriodTokenLimit) normalize() (ModelPeriodTokenLimit, error) {
-	if p.Tokens < 0 {
+	if p.Tokens < 0 || p.MicroUSD < 0 {
 		return ModelPeriodTokenLimit{}, fmt.Errorf("%w: model token limits must not be negative", ErrInvalidArgument)
 	}
 	mode := strings.ToLower(strings.TrimSpace(p.Mode))
@@ -77,7 +92,7 @@ func (p ModelPeriodTokenLimit) normalize() (ModelPeriodTokenLimit, error) {
 	if mode != ModelTokenLimitModeUnlimited && mode != ModelTokenLimitModeAvailable {
 		return ModelPeriodTokenLimit{}, fmt.Errorf("%w: model token limit mode must be available or unlimited", ErrInvalidArgument)
 	}
-	return ModelPeriodTokenLimit{Tokens: p.Tokens, Mode: mode}, nil
+	return ModelPeriodTokenLimit{Tokens: p.Tokens, Mode: mode, MicroUSD: p.MicroUSD}, nil
 }
 
 func normalizeModelTokenLimits(limits []ModelTokenLimit) ([]ModelTokenLimit, error) {
@@ -202,7 +217,7 @@ func normalizeUnmatchedModelsMode(mode string) string {
 	return UnmatchedModelsAvailable
 }
 
-func enforceModelTokenLimits(ctx context.Context, db tokenQueryer, keyID, model string, estimate int64, limits []ModelTokenLimit, unmatchedMode string, nowUnixMilli int64) error {
+func enforceModelTokenLimits(ctx context.Context, db tokenQueryer, keyID, model string, estimate int64, amount money.MicroUSD, limits []ModelTokenLimit, unmatchedMode string, nowUnixMilli int64) error {
 	matched, ok := MatchModelTokenLimit(limits, model)
 	if !ok {
 		if normalizeUnmatchedModelsMode(unmatchedMode) == UnmatchedModelsDisabled {
@@ -213,7 +228,8 @@ func enforceModelTokenLimits(ctx context.Context, db tokenQueryer, keyID, model 
 	if estimate < 0 {
 		estimate = 0
 	}
-	if matched.Total.Cap() <= 0 && matched.Daily.Cap() <= 0 && matched.Weekly.Cap() <= 0 && matched.Monthly.Cap() <= 0 {
+	if matched.Total.Cap() <= 0 && matched.Daily.Cap() <= 0 && matched.Weekly.Cap() <= 0 && matched.Monthly.Cap() <= 0 &&
+		matched.Total.SpendCap() <= 0 && matched.Daily.SpendCap() <= 0 && matched.Weekly.SpendCap() <= 0 && matched.Monthly.SpendCap() <= 0 {
 		return nil
 	}
 	totals, err := loadModelPeriodTokenTotals(ctx, db, keyID, nowUnixMilli)
@@ -237,14 +253,35 @@ func enforceModelTokenLimits(ctx context.Context, db tokenQueryer, keyID, model 
 			return period.err
 		}
 	}
+	for _, period := range []struct {
+		cap  money.MicroUSD
+		used int64
+		err  error
+	}{
+		{matched.Total.SpendCap(), sumMatchingModelTokens(totals.totalCost, matched.Model), ErrTotalModelSpendExceeded},
+		{matched.Daily.SpendCap(), sumMatchingModelTokens(totals.dailyCost, matched.Model), ErrDailyModelSpendExceeded},
+		{matched.Weekly.SpendCap(), sumMatchingModelTokens(totals.weeklyCost, matched.Model), ErrWeeklyModelSpendExceeded},
+		{matched.Monthly.SpendCap(), sumMatchingModelTokens(totals.monthlyCost, matched.Model), ErrMonthlyModelSpendExceeded},
+	} {
+		if period.cap <= 0 {
+			continue
+		}
+		if money.MicroUSD(period.used) > period.cap-amount {
+			return fmt.Errorf("%w: %s", period.err, matched.Model)
+		}
+	}
 	return nil
 }
 
 type modelPeriodTokenTotals struct {
-	total   map[string]int64
-	daily   map[string]int64
-	weekly  map[string]int64
-	monthly map[string]int64
+	total       map[string]int64
+	daily       map[string]int64
+	weekly      map[string]int64
+	monthly     map[string]int64
+	totalCost   map[string]int64
+	dailyCost   map[string]int64
+	weeklyCost  map[string]int64
+	monthlyCost map[string]int64
 }
 
 func loadModelPeriodTokenTotals(ctx context.Context, db tokenQueryer, keyID string, nowUnixMilli int64) (modelPeriodTokenTotals, error) {
@@ -263,9 +300,13 @@ func loadModelPeriodTokenTotals(ctx context.Context, db tokenQueryer, keyID stri
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN (`+tokenExpr+`) ELSE 0 END), 0),
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN (`+tokenExpr+`) ELSE 0 END), 0),
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN (`+tokenExpr+`) ELSE 0 END), 0),
-		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN (`+tokenExpr+`) ELSE 0 END), 0)
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN (`+tokenExpr+`) ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN cost_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN cost_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN cost_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN cost_micro_usd ELSE 0 END), 0)
 		FROM usage_ledger WHERE plugin_key_id = ? AND created_at_unix_ms >= ? GROUP BY model`,
-		totalStart, dayStart, weekStart, monthStart, keyID, from)
+		totalStart, dayStart, weekStart, monthStart, totalStart, dayStart, weekStart, monthStart, keyID, from)
 	if err != nil {
 		return modelPeriodTokenTotals{}, fmt.Errorf("sum model period tokens: %w", err)
 	}
@@ -273,9 +314,13 @@ func loadModelPeriodTokenTotals(ctx context.Context, db tokenQueryer, keyID stri
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN request_token_estimate ELSE 0 END), 0),
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN request_token_estimate ELSE 0 END), 0),
 		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN request_token_estimate ELSE 0 END), 0),
-		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN request_token_estimate ELSE 0 END), 0)
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN request_token_estimate ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN held_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN held_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN held_micro_usd ELSE 0 END), 0),
+		COALESCE(SUM(CASE WHEN created_at_unix_ms >= ? THEN held_micro_usd ELSE 0 END), 0)
 		FROM reservations WHERE plugin_key_id = ? AND status = 'held' AND created_at_unix_ms >= ? GROUP BY model`,
-		totalStart, dayStart, weekStart, monthStart, keyID, from)
+		totalStart, dayStart, weekStart, monthStart, totalStart, dayStart, weekStart, monthStart, keyID, from)
 	if err != nil {
 		return modelPeriodTokenTotals{}, fmt.Errorf("sum model period held tokens: %w", err)
 	}
@@ -291,6 +336,18 @@ func loadModelPeriodTokenTotals(ctx context.Context, db tokenQueryer, keyID stri
 	for model, tokens := range held.monthly {
 		settled.monthly[model] += tokens
 	}
+	for model, cost := range held.totalCost {
+		settled.totalCost[model] += cost
+	}
+	for model, cost := range held.dailyCost {
+		settled.dailyCost[model] += cost
+	}
+	for model, cost := range held.weeklyCost {
+		settled.weeklyCost[model] += cost
+	}
+	for model, cost := range held.monthlyCost {
+		settled.monthlyCost[model] += cost
+	}
 	return settled, nil
 }
 
@@ -301,21 +358,29 @@ func queryModelPeriodTokenTotals(ctx context.Context, db tokenQueryer, query str
 	}
 	defer rows.Close()
 	out := modelPeriodTokenTotals{
-		total:   make(map[string]int64),
-		daily:   make(map[string]int64),
-		weekly:  make(map[string]int64),
-		monthly: make(map[string]int64),
+		total:       make(map[string]int64),
+		daily:       make(map[string]int64),
+		weekly:      make(map[string]int64),
+		monthly:     make(map[string]int64),
+		totalCost:   make(map[string]int64),
+		dailyCost:   make(map[string]int64),
+		weeklyCost:  make(map[string]int64),
+		monthlyCost: make(map[string]int64),
 	}
 	for rows.Next() {
 		var model string
-		var total, daily, weekly, monthly int64
-		if err := rows.Scan(&model, &total, &daily, &weekly, &monthly); err != nil {
+		var total, daily, weekly, monthly, totalCost, dailyCost, weeklyCost, monthlyCost int64
+		if err := rows.Scan(&model, &total, &daily, &weekly, &monthly, &totalCost, &dailyCost, &weeklyCost, &monthlyCost); err != nil {
 			return modelPeriodTokenTotals{}, err
 		}
 		out.total[model] += total
 		out.daily[model] += daily
 		out.weekly[model] += weekly
 		out.monthly[model] += monthly
+		out.totalCost[model] += totalCost
+		out.dailyCost[model] += dailyCost
+		out.weeklyCost[model] += weeklyCost
+		out.monthlyCost[model] += monthlyCost
 	}
 	return out, rows.Err()
 }
@@ -357,6 +422,11 @@ func (s *Store) ListModelTokenUsage(ctx context.Context, keyID string, limits []
 			DailyUsed:   sumMatchingModelTokens(totals.daily, limit.Model),
 			WeeklyUsed:  sumMatchingModelTokens(totals.weekly, limit.Model),
 			MonthlyUsed: sumMatchingModelTokens(totals.monthly, limit.Model),
+
+			TotalSpent:   money.MicroUSD(sumMatchingModelTokens(totals.totalCost, limit.Model)),
+			DailySpent:   money.MicroUSD(sumMatchingModelTokens(totals.dailyCost, limit.Model)),
+			WeeklySpent:  money.MicroUSD(sumMatchingModelTokens(totals.weeklyCost, limit.Model)),
+			MonthlySpent: money.MicroUSD(sumMatchingModelTokens(totals.monthlyCost, limit.Model)),
 		})
 	}
 	return out, nil

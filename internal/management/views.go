@@ -89,6 +89,7 @@ func modelTokenLimitViews(limits []store.ModelTokenLimit) []map[string]any {
 func periodTokenLimitView(period store.ModelPeriodTokenLimit) map[string]any {
 	return map[string]any{
 		"tokens":    period.Tokens,
+		"micro_usd": period.SpendCap(),
 		"mode":      period.NormalizedMode(),
 		"unlimited": period.Cap() == 0,
 		"available": period.Cap() == 0 && period.NormalizedMode() == store.ModelTokenLimitModeAvailable,
@@ -108,6 +109,11 @@ func modelTokenUsageViews(items []store.ModelTokenUsage) []map[string]any {
 			"daily_used":   item.DailyUsed,
 			"weekly_used":  item.WeeklyUsed,
 			"monthly_used": item.MonthlyUsed,
+
+			"total_spent_micro_usd":   item.TotalSpent,
+			"daily_spent_micro_usd":   item.DailySpent,
+			"weekly_spent_micro_usd":  item.WeeklySpent,
+			"monthly_spent_micro_usd": item.MonthlySpent,
 		})
 	}
 	return out

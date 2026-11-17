@@ -219,6 +219,8 @@ curl -sS "http://127.0.0.1:8317/v1/chat/completions" \
 
 匹配规则时精确模型名优先；多个 glob 命中时，较长模式优先。Token 限制在预占时检查，已结算 Token 与在途请求估算都会计入。总 Token 重置后从重置时刻重新累计。
 
+每个周期还可设置 `micro_usd` 消费上限，按匹配的模型合计，例如 `{"model": "claude-*", "total": {"micro_usd": 1000000000}}` 把全部 Claude 模型限制在 $1000，而全为 0 的 `gemini-*` 不限制。`0` 表示不限制，已结算费用与在途预占都会计入。
+
 ### 定价规则
 
 文本模型价格的单位是 **每 1M Token 的 micro-USD**。纯出图模型使用 `billing_mode: "per_image"`，`per_image` 表示每张图的 micro-USD。

@@ -125,7 +125,7 @@ func xaiCreditWindows(d map[string]any) []AuthQuotaWindow {
 	}
 	for i, item := range products {
 		m, _ := item.(map[string]any)
-		name := first(findText(m, "product", "name", "label"), fmt.Sprintf("产品 %d", i+1))
+		name := first(findText(m, "product", "name", "label"), fmt.Sprintf("Product %d", i+1))
 		id := "weekly-" + first(codexSlug(name), fmt.Sprintf("%d", i+1))
 		if w, ok := xaiPercentWindow(id, name, "product", name, number(m, "usagePercent", "usage_percent"), start, end, seconds); ok {
 			out = append(out, w)

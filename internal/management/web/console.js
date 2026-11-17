@@ -60,7 +60,7 @@
     'CPA 额度管理': { 'zh-TW':'CPA 額度管理', en:'CPA Credit Manager', ru:'Менеджер лимитов CPA' }, '选择日期和时间': { 'zh-TW':'選擇日期和時間', en:'Select date and time', ru:'Выберите дату и время' }, '上个月': { 'zh-TW':'上個月', en:'Previous month', ru:'Предыдущий месяц' }, '下个月': { 'zh-TW':'下個月', en:'Next month', ru:'Следующий месяц' }, '减少小时': { 'zh-TW':'減少小時', en:'Decrease hours', ru:'Уменьшить часы' }, '减少分钟': { 'zh-TW':'減少分鐘', en:'Decrease minutes', ru:'Уменьшить минуты' }, '增加小时': { 'zh-TW':'增加小時', en:'Increase hours', ru:'Увеличить часы' }, '增加分钟': { 'zh-TW':'增加分鐘', en:'Increase minutes', ru:'Увеличить минуты' }, '时间': { 'zh-TW':'時間', en:'Time', ru:'Время' }, '清除': { 'zh-TW':'清除', en:'Clear', ru:'Очистить' }, '此刻': { 'zh-TW':'此刻', en:'Now', ru:'Сейчас' },
     'Token 显示单位': { 'zh-TW':'Token 顯示單位', en:'Token display unit', ru:'Единица отображения токенов' }, '原始数量': { 'zh-TW':'原始數量', en:'Raw count', ru:'Исходное количество' },
     '千 (×1,000)': { 'zh-TW':'千 (×1,000)', en:'Thousand (×1,000)', ru:'Тысячи (×1,000)' }, 'k (×1,000)': { 'zh-TW':'k (×1,000)', en:'k (×1,000)', ru:'k (×1,000)' }, '万 (×10,000)': { 'zh-TW':'萬 (×10,000)', en:'10 thousand (×10,000)', ru:'Десятки тысяч (×10,000)' }, 'w (×10,000)': { 'zh-TW':'w (×10,000)', en:'w (×10,000)', ru:'w (×10,000)' }, '百万 (×1,000,000)': { 'zh-TW':'百萬 (×1,000,000)', en:'Million (×1,000,000)', ru:'Миллионы (×1,000,000)' }, 'm (×1,000,000)': { 'zh-TW':'m (×1,000,000)', en:'m (×1,000,000)', ru:'m (×1,000,000)' },
-    '个': { 'zh-TW':'個', en:'个', ru:'个' }, '千': { 'zh-TW':'千', en:'千', ru:'千' }, 'k': { 'zh-TW':'k', en:'k', ru:'k' }, '万': { 'zh-TW':'萬', en:'万', ru:'万' }, 'w': { 'zh-TW':'w', en:'w', ru:'w' }, '百万': { 'zh-TW':'百萬', en:'百万', ru:'百万' }, 'm': { 'zh-TW':'m', en:'m', ru:'m' },
+    '个': { 'zh-TW':'個', en:'×1', ru:'×1' }, '千': { 'zh-TW':'千', en:'千', ru:'千' }, 'k': { 'zh-TW':'k', en:'k', ru:'k' }, '万': { 'zh-TW':'萬', en:'万', ru:'万' }, 'w': { 'zh-TW':'w', en:'w', ru:'w' }, '百万': { 'zh-TW':'百萬', en:'百万', ru:'百万' }, 'm': { 'zh-TW':'m', en:'m', ru:'m' },
     '实时美元兑人民币汇率': { 'zh-TW':'即時美元兌人民幣匯率', en:'Live USD to CNY rate', ru:'Курс USD к CNY' },
     '汇率获取失败，已使用上次汇率': { 'zh-TW':'匯率取得失敗，已使用上次匯率', en:'Could not refresh the rate; using the last saved value', ru:'Не удалось обновить курс; используется прошлое значение' },
     '不限制': { 'zh-TW':'不限制', en:'Unlimited', ru:'Без ограничений' },
@@ -210,7 +210,123 @@
     '确认应用': { 'zh-TW':'確認套用', en:'Confirm apply', ru:'Подтвердить применение' },
     '本页': { 'zh-TW':'本頁', en:'This page', ru:'Эта страница' },
     '当前筛选': { 'zh-TW':'目前篩選', en:'Current filters', ru:'Текущие фильтры' },
+    '用量': { 'zh-TW':'用量', en:'usage', ru:'расход' },
     '个认证': { 'zh-TW':'個認證', en:'auths', ru:'авторизаций' },
+    '、': { 'zh-TW':'、', en:', ', ru:', ' }, '，': { 'zh-TW':'，', en:', ', ru:', ' }, '；': { 'zh-TW':'；', en:'; ', ru:'; ' }, '。': { 'zh-TW':'。', en:'.', ru:'.' }, '「': { 'zh-TW':'「', en:'"', ru:'«' }, '」': { 'zh-TW':'」', en:'"', ru:'»' },
+    '价格来源：models.dev': { 'zh-TW':'價格來源：models.dev', en:'Prices from models.dev', ru:'Цены из models.dev' },
+    '规则': { 'zh-TW':'規則', en:'Rule', ru:'Правило' }, '计费': { 'zh-TW':'計費', en:'Billing', ru:'Тариф' },
+    'input 含缓存': { 'zh-TW':'input 含快取', en:'input includes cache', ru:'input включает кэш' }, 'input 不含缓存': { 'zh-TW':'input 不含快取', en:'input excludes cache', ru:'input без кэша' },
+    '预热设置': { 'zh-TW':'預熱設定', en:'Warmup settings', ru:'Настройки прогрева' }, '关闭预热设置': { 'zh-TW':'關閉預熱設定', en:'Close warmup settings', ru:'Закрыть настройки прогрева' },
+    '额度窗口预热': { 'zh-TW':'額度窗口預熱', en:'Quota window warmup', ru:'Прогрев окна квоты' },
+    '对启用的平台认证发送最小真实请求，提前启动其滚动额度周期。仅在确认该平台窗口行为后启用。': { 'zh-TW':'對啟用的平台認證傳送最小真實請求，提前啟動其滾動額度週期。僅在確認該平台窗口行為後啟用。', en:'Sends a minimal real request for enabled platform auths to start their rolling quota period early. Enable only after confirming how the platform window behaves.', ru:'Отправляет минимальный реальный запрос для включённых авторизаций, чтобы заранее запустить скользящий период квоты. Включайте, только убедившись в поведении окна платформы.' },
+    '定时任务': { 'zh-TW':'定時任務', en:'Scheduled tasks', ru:'Запланированные задачи' },
+    '每条任务独立选择每天、每周或一次性、认证文件、模型与运行时间。一次性任务执行后会自动停用。': { 'zh-TW':'每條任務獨立選擇每天、每週或一次性、認證檔、模型與執行時間。一次性任務執行後會自動停用。', en:'Each task has its own frequency (daily, weekly, or once), auth files, models, and run time. One-time tasks turn off after they run.', ru:'У каждой задачи своя частота (ежедневно, еженедельно или однократно), файлы авторизации, модели и время запуска. Однократные задачи отключаются после запуска.' },
+    '添加任务': { 'zh-TW':'新增任務', en:'Add task', ru:'Добавить задачу' }, '执行保护': { 'zh-TW':'執行保護', en:'Execution limits', ru:'Ограничения запуска' },
+    '并行与稳定抖动': { 'zh-TW':'並行與穩定抖動', en:'Parallelism and stable jitter', ru:'Параллельность и стабильный разброс' },
+    '每个认证最大并行': { 'zh-TW':'每個認證最大並行', en:'Max parallel per auth', ru:'Макс. параллельно на авторизацию' }, '稳定抖动（秒）': { 'zh-TW':'穩定抖動（秒）', en:'Stable jitter (sec)', ru:'Стабильный разброс (с)' },
+    '同一认证文件同时进行的预热数。不同认证互不影响。': { 'zh-TW':'同一認證檔同時進行的預熱數。不同認證互不影響。', en:'Concurrent warmups per auth file. Different auths do not affect each other.', ru:'Одновременные прогревы на файл авторизации. Разные авторизации не влияют друг на друга.' },
+    '在预热时刻之后最多推迟这么多秒，避免整点撞车。不同认证仍按各自哈希错开。': { 'zh-TW':'在預熱時刻之後最多延後這麼多秒，避免整點撞車。不同認證仍按各自雜湊錯開。', en:'Delay up to this many seconds after the warmup time so tasks do not all fire on the hour. Each auth is still offset by its own hash.', ru:'Задержка до стольких секунд после времени прогрева, чтобы задачи не стартовали одновременно. Каждая авторизация смещается по своему хешу.' },
+    '保存设置': { 'zh-TW':'儲存設定', en:'Save settings', ru:'Сохранить настройки' },
+    '搜索密钥标签或 ID': { 'zh-TW':'搜尋密鑰標籤或 ID', en:'Search key label or ID', ru:'Поиск метки ключа или ID' },
+    '向本页各认证同步上游额度（会请求上游）': { 'zh-TW':'向本頁各認證同步上游額度（會請求上游）', en:'Sync upstream quotas for auths on this page (calls upstream)', ru:'Синхронизировать квоты upstream для авторизаций на странице (запрос к upstream)' },
+    '空闲超过此时长后解除会话绑定，默认 3600': { 'zh-TW':'空閒超過此時長後解除會話綁定，預設 3600', en:'Clear the session binding after this much idle time; default 3600', ru:'Сброс привязки после такого простоя, по умолчанию 3600' },
+    'models.dev 价格目录不可用': { 'zh-TW':'models.dev 價格目錄不可用', en:'models.dev price catalog unavailable', ru:'Каталог цен models.dev недоступен' },
+    '汇率获取失败': { 'zh-TW':'匯率取得失敗', en:'Could not fetch the exchange rate', ru:'Не удалось получить курс' },
+    '金额无效': { 'zh-TW':'金額無效', en:'Invalid amount', ru:'Неверная сумма' },
+    '已拒绝向非同源地址发送管理密钥': { 'zh-TW':'已拒絕向非同源位址傳送管理金鑰', en:'Refused to send the management key to a different origin', ru:'Отказано в отправке ключа управления на другой источник' },
+    '请先填写并保存宿主管理密钥': { 'zh-TW':'請先填寫並儲存宿主管理金鑰', en:'Enter and save the host management token first', ru:'Сначала введите и сохраните токен управления хостом' },
+    '网络失败': { 'zh-TW':'網路失敗', en:'Network error', ru:'Ошибка сети' },
+    '。请检查 API 根地址是否可访问。': { 'zh-TW':'。請檢查 API 根位址是否可存取。', en:'. Check that the API base URL is reachable.', ru:'. Проверьте доступность базового URL API.' },
+    '。请检查 API 根地址是否可访问，以及是否跨域被浏览器拦截。': { 'zh-TW':'。請檢查 API 根位址是否可存取，以及是否被瀏覽器跨域攔截。', en:'. Check that the API base URL is reachable and not blocked by the browser as cross-origin.', ru:'. Проверьте доступность базового URL API и не блокирует ли браузер кросс-доменный запрос.' },
+    '无法通过管理接口发现模型，且 /v1/models 鉴权失败（': { 'zh-TW':'無法透過管理介面發現模型，且 /v1/models 驗證失敗（', en:'Could not find models through the management API, and /v1/models auth failed (', ru:'Не удалось найти модели через API управления, и авторизация /v1/models не прошла (' },
+    '）。请确认宿主已配置上游认证文件或 AI 提供商。': { 'zh-TW':'）。請確認宿主已設定上游認證檔或 AI 提供商。', en:'). Check that the host has upstream auth files or AI providers configured.', ru:'). Проверьте, что на хосте настроены файлы авторизации или AI-провайдеры.' },
+    'Not Found（404）：未找到管理接口': { 'zh-TW':'Not Found（404）：找不到管理介面', en:'Not Found (404): no management API at', ru:'Not Found (404): API управления не найден по адресу' },
+    '。请把「CLIProxyAPI 根地址」改成代理实际地址（如 http://127.0.0.1:8317），确认已部署最新 DLL 并重启宿主；密钥必须是宿主 management secret。': { 'zh-TW':'。請把「CLIProxyAPI 根位址」改成代理實際位址（如 http://127.0.0.1:8317），確認已部署最新 DLL 並重新啟動宿主；金鑰必須是宿主 management secret。', en:'. Set CLIProxyAPI base URL to the actual proxy address (e.g. http://127.0.0.1:8317), deploy the latest DLL and restart the host. The key must be the host management secret.', ru:'. Укажите в «Базовый URL CLIProxyAPI» реальный адрес прокси (например, http://127.0.0.1:8317), установите последнюю DLL и перезапустите хост. Ключ должен быть management secret хоста.' },
+    '（管理密钥错误，或未允许远程管理）': { 'zh-TW':'（管理金鑰錯誤，或未允許遠端管理）', en:' (wrong management key, or remote management is not allowed)', ru:' (неверный ключ управления или удалённое управление запрещено)' },
+    '选择时间': { 'zh-TW':'選擇時間', en:'Select time', ru:'Выберите время' }, '输入日期时间': { 'zh-TW':'輸入日期時間', en:'Enter date and time', ru:'Введите дату и время' },
+    '开始时间不能晚于结束时间': { 'zh-TW':'開始時間不能晚於結束時間', en:'Start time cannot be after end time', ru:'Время начала не может быть позже времени окончания' },
+    '未标记模型': { 'zh-TW':'未標記模型', en:'Unknown model', ru:'Неизвестная модель' },
+    '已下钻到模型：': { 'zh-TW':'已下鑽到模型：', en:'Drilled down to model: ', ru:'Фильтр по модели: ' },
+    '个有使用记录的小时': { 'zh-TW':'個有使用紀錄的小時', en:'hours with usage', ru:'часов с данными' }, '个有使用记录的自然日': { 'zh-TW':'個有使用紀錄的自然日', en:'days with usage', ru:'дней с данными' }, '个有使用记录的自然月': { 'zh-TW':'個有使用紀錄的自然月', en:'months with usage', ru:'месяцев с данными' },
+    '按小时汇总实际费用': { 'zh-TW':'按小時彙總實際費用', en:'Actual cost by hour', ru:'Фактические расходы по часам' }, '按自然日汇总实际费用': { 'zh-TW':'按自然日彙總實際費用', en:'Actual cost by day', ru:'Фактические расходы по дням' }, '按自然月汇总实际费用': { 'zh-TW':'按自然月彙總實際費用', en:'Actual cost by month', ru:'Фактические расходы по месяцам' },
+    '（已删除）': { 'zh-TW':'（已刪除）', en:' (deleted)', ru:' (удалён)' },
+    '匹配多个密钥，请从搜索建议中选择完整项': { 'zh-TW':'符合多個密鑰，請從搜尋建議中選擇完整項目', en:'Several keys match; pick one from the suggestions', ru:'Подходит несколько ключей; выберите из подсказок' },
+    '匹配多个账号，请从搜索建议中选择完整项': { 'zh-TW':'符合多個帳號，請從搜尋建議中選擇完整項目', en:'Several accounts match; pick one from the suggestions', ru:'Подходит несколько аккаунтов; выберите из подсказок' },
+    '复制失败，请手动复制': { 'zh-TW':'複製失敗，請手動複製', en:'Copy failed; copy it manually', ru:'Не удалось скопировать; скопируйте вручную' }, '已复制密钥': { 'zh-TW':'已複製密鑰', en:'Key copied', ru:'Ключ скопирован' }, '复制失败': { 'zh-TW':'複製失敗', en:'Copy failed', ru:'Не удалось скопировать' },
+    '正在查看「': { 'zh-TW':'正在查看「', en:'Viewing the plaintext key for "', ru:'Просмотр открытого ключа «' },
+    '」的明文凭据；可复制后继续管理。': { 'zh-TW':'」的明文憑證；可複製後繼續管理。', en:'". Copy it before you continue.', ru:'». Скопируйте его, прежде чем продолжить.' },
+    '已读取加密保存的密钥明文': { 'zh-TW':'已讀取加密儲存的密鑰明文', en:'Loaded the stored key plaintext', ru:'Открытый ключ загружен' },
+    '添加模型后，可设置总 / 日 / 周 / 月 Token 上限': { 'zh-TW':'新增模型後，可設定總 / 日 / 週 / 月 Token 上限', en:'Add a model to set total, daily, weekly, and monthly token caps', ru:'Добавьте модель, чтобы задать общий, дневной, недельный и месячный лимиты токенов' },
+    '总 Token': { 'zh-TW':'總 Token', en:'Total tokens', ru:'Всего токенов' },
+    '模型目录加载失败：': { 'zh-TW':'模型目錄載入失敗：', en:'Failed to load the model catalog: ', ru:'Не удалось загрузить каталог моделей: ' },
+    '。可稍后重新打开弹窗。': { 'zh-TW':'。可稍後重新開啟彈窗。', en:'. Reopen the dialog later to retry.', ru:'. Откройте диалог позже, чтобы повторить.' },
+    '。已连接到 CPA，可稍后重试。': { 'zh-TW':'。已連線到 CPA，可稍後重試。', en:'. Connected to CPA; try again later.', ru:'. Подключение к CPA есть; повторите позже.' },
+    '可编辑密钥策略，按需查看明文或轮换凭据。': { 'zh-TW':'可編輯密鑰策略，按需查看明文或輪換憑證。', en:'Edit the key policy, view the plaintext, or rotate the key.', ru:'Измените политику ключа, посмотрите его или смените.' },
+    '创建替代凭据并立即禁用旧密钥；历史使用记录会保留在旧密钥上。': { 'zh-TW':'建立替代憑證並立即停用舊密鑰；歷史使用記錄會保留在舊密鑰上。', en:'Creates a replacement key and disables the old one now. Usage history stays with the old key.', ru:'Создаёт новый ключ и сразу отключает старый. История использования остаётся у старого ключа.' },
+    '正在编辑「': { 'zh-TW':'正在編輯「', en:'Editing "', ru:'Редактирование «' },
+    '最大并发请求数必须是非负整数': { 'zh-TW':'最大併發請求數必須是非負整數', en:'Max concurrent requests must be a non-negative integer', ru:'Макс. параллельных запросов должно быть целым числом ≥ 0' },
+    '密钥策略已保存': { 'zh-TW':'密鑰策略已儲存', en:'Key policy saved', ru:'Политика ключа сохранена' },
+    '密钥已创建并复制到剪贴板': { 'zh-TW':'密鑰已建立並複製到剪貼簿', en:'Key created and copied to the clipboard', ru:'Ключ создан и скопирован в буфер обмена' },
+    '密钥已创建；自动复制失败，请手动复制': { 'zh-TW':'密鑰已建立；自動複製失敗，請手動複製', en:'Key created; automatic copy failed, copy it manually', ru:'Ключ создан; автокопирование не удалось, скопируйте вручную' },
+    '密钥已轮换，旧密钥已禁用；请复制新密钥': { 'zh-TW':'密鑰已輪換，舊密鑰已停用；請複製新密鑰', en:'Key rotated and the old key disabled; copy the new key', ru:'Ключ сменён, старый отключён; скопируйте новый ключ' },
+    '密钥已创建；请复制明文': { 'zh-TW':'密鑰已建立；請複製明文', en:'Key created; copy the plaintext', ru:'Ключ создан; скопируйте его' },
+    '已回填': { 'zh-TW':'已回填', en:'Filled', ru:'Заполнено:' },
+    '的 Token 价（图片输出按 Token，不是按张），来源：models.dev /': { 'zh-TW':'的 Token 價（圖片輸出按 Token，不是按張），來源：models.dev /', en:'token prices (image output is billed per token, not per image), source: models.dev /', ru:'цены токенов (вывод изображений по токенам, не за картинку), источник: models.dev /' },
+    '的价格，来源：models.dev /': { 'zh-TW':'的價格，來源：models.dev /', en:'prices, source: models.dev /', ru:'цены, источник: models.dev /' },
+    '。请核对后保存。': { 'zh-TW':'。請核對後儲存。', en:'. Check them before saving.', ru:'. Проверьте перед сохранением.' },
+    '」是出图模型，不能套用 Token 价。请填写每张 USD 后保存。': { 'zh-TW':'」是出圖模型，不能套用 Token 價。請填寫每張 USD 後儲存。', en:'" is an image model; token prices do not apply. Enter USD per image, then save.', ru:'» генерирует изображения; цены токенов не применяются. Укажите USD за картинку и сохраните.' },
+    '正在读取当前代理模型与价格目录…': { 'zh-TW':'正在讀取目前代理模型與價格目錄…', en:'Loading proxy models and the price catalog…', ru:'Загрузка моделей прокси и каталога цен…' },
+    '无法读取当前代理模型': { 'zh-TW':'無法讀取目前代理模型', en:'Could not load proxy models', ru:'Не удалось загрузить модели прокси' },
+    '个 Token 价': { 'zh-TW':'個 Token 價', en:'token prices', ru:'цен токенов' }, '个出图模型': { 'zh-TW':'個出圖模型', en:'image models', ru:'моделей изображений' },
+    '新增': { 'zh-TW':'新增', en:'Added', ru:'Добавлено' }, '条，保留': { 'zh-TW':'條，保留', en:'rules, kept', ru:'правил, оставлено' }, '条规则': { 'zh-TW':'條規則', en:'rules', ru:'правил' }, '，失败': { 'zh-TW':'，失敗', en:', failed:', ru:', ошибок:' },
+    '个未自动匹配': { 'zh-TW':'個未自動匹配', en:'not matched automatically', ru:'без автосопоставления' },
+    '；价格目录暂不可用，仍可手动设置价格。': { 'zh-TW':'；價格目錄暫不可用，仍可手動設定價格。', en:'; price catalog unavailable, prices can still be set manually.', ru:'; каталог цен недоступен, цены можно задать вручную.' },
+    '部分 models.dev 价格未保存：': { 'zh-TW':'部分 models.dev 價格未儲存：', en:'Some models.dev prices were not saved: ', ru:'Часть цен models.dev не сохранена: ' },
+    '价格目录暂不可用：': { 'zh-TW':'價格目錄暫不可用：', en:'Price catalog unavailable: ', ru:'Каталог цен недоступен: ' },
+    '。仍可手动设置价格。': { 'zh-TW':'。仍可手動設定價格。', en:'. Prices can still be set manually.', ru:'. Цены можно задать вручную.' },
+    '模型目录与价格规则已同步。选择模型可查看或调整 models.dev 价格。': { 'zh-TW':'模型目錄與價格規則已同步。選擇模型可查看或調整 models.dev 價格。', en:'Model catalog and pricing rules synced. Pick a model to view or adjust its models.dev price.', ru:'Каталог моделей и правила цен синхронизированы. Выберите модель, чтобы посмотреть или изменить цену models.dev.' },
+    '阶梯价详情请在编辑中查看': { 'zh-TW':'階梯價詳情請在編輯中查看', en:'Open the editor to see tier details', ru:'Подробности тарифов в редакторе' },
+    '档阶梯': { 'zh-TW':'檔階梯', en:'tiers', ru:'тарифов' }, '每张': { 'zh-TW':'每張', en:'Per image', ru:'За картинку' },
+    '按张 · 无 Token 参考价': { 'zh-TW':'按張 · 無 Token 參考價', en:'Per image · no token reference price', ru:'За картинку · нет справочной цены токенов' },
+    '无 models.dev 报价': { 'zh-TW':'無 models.dev 報價', en:'No models.dev price', ru:'Нет цены models.dev' },
+    '参考价': { 'zh-TW':'參考價', en:'Reference price', ru:'Справочная цена' }, 'USD · 1M / 张': { 'zh-TW':'USD · 1M / 張', en:'USD · 1M / image', ru:'USD · 1M / картинка' }, '本机': { 'zh-TW':'本機', en:'Local', ru:'Локально' },
+    '删除价格规则': { 'zh-TW':'刪除價格規則', en:'Delete pricing rule', ru:'Удалить правило цены' }, '已删除价格规则': { 'zh-TW':'已刪除價格規則', en:'Pricing rule deleted', ru:'Правило цены удалено' },
+    '费用范围': { 'zh-TW':'費用範圍', en:'Cost range', ru:'Диапазон расходов' }, 'Token 范围': { 'zh-TW':'Token 範圍', en:'Token range', ru:'Диапазон токенов' }, '结果': { 'zh-TW':'結果', en:'Result', ru:'Результат' },
+    '费用范围必须是非负数字': { 'zh-TW':'費用範圍必須是非負數字', en:'Cost range must be a non-negative number', ru:'Диапазон расходов должен быть числом ≥ 0' },
+    '个未同步': { 'zh-TW':'個未同步', en:'not synced', ru:'не синхронизировано' }, '个缓存过期': { 'zh-TW':'個快取過期', en:'stale', ru:'устарело' },
+    '在途请求数': { 'zh-TW':'在途請求數', en:'In-flight requests', ru:'Незавершённые запросы' }, '上次同步': { 'zh-TW':'上次同步', en:'Last synced', ru:'Последняя синхронизация' },
+    '预热中': { 'zh-TW':'預熱中', en:'Warming up', ru:'Прогрев' }, '预热': { 'zh-TW':'預熱', en:'Warm up', ru:'Прогреть' }, '已预热': { 'zh-TW':'已預熱', en:'Warmed up', ru:'Прогрето' }, '未预热': { 'zh-TW':'未預熱', en:'Not warmed', ru:'Не прогрето' }, '预热失败': { 'zh-TW':'預熱失敗', en:'Warmup failed', ru:'Прогрев не удался' },
+    '认证令牌缺失，请重新 OAuth 登录': { 'zh-TW':'認證權杖缺失，請重新 OAuth 登入', en:'Auth token missing; sign in with OAuth again', ru:'Нет токена авторизации; войдите через OAuth снова' },
+    'XAI access token 已过期，请重新 OAuth 登录': { 'zh-TW':'XAI access token 已過期，請重新 OAuth 登入', en:'XAI access token expired; sign in with OAuth again', ru:'XAI access token истёк; войдите через OAuth снова' },
+    '认证已失效，请重新 OAuth 登录': { 'zh-TW':'認證已失效，請重新 OAuth 登入', en:'Auth is no longer valid; sign in with OAuth again', ru:'Авторизация недействительна; войдите через OAuth снова' },
+    '上游限流': { 'zh-TW':'上游限流', en:'Upstream rate limited', ru:'Ограничение upstream' }, '请求超时': { 'zh-TW':'請求逾時', en:'Request timed out', ru:'Тайм-аут запроса' }, '所选模型不可用': { 'zh-TW':'所選模型不可用', en:'Selected model unavailable', ru:'Выбранная модель недоступна' }, '上游执行失败': { 'zh-TW':'上游執行失敗', en:'Upstream request failed', ru:'Ошибка upstream' },
+    '窗口已更新': { 'zh-TW':'窗口已更新', en:'Window updated', ru:'Окно обновлено' },
+    '已更新': { 'zh-TW':'已更新', en:'Updated', ru:'Обновлено:' }, '个认证的并发': { 'zh-TW':'個認證的併發', en:'auth concurrency settings', ru:'настроек параллельности' },
+    '认证额度预热已完成': { 'zh-TW':'認證額度預熱已完成', en:'Auth quota warmup finished', ru:'Прогрев квоты завершён' },
+    '该认证文件没有可用于预热的模型': { 'zh-TW':'該認證檔沒有可用於預熱的模型', en:'This auth file has no model available for warmup', ru:'В этом файле авторизации нет модели для прогрева' },
+    '每天': { 'zh-TW':'每天', en:'Daily', ru:'Ежедневно' }, '每周': { 'zh-TW':'每週', en:'Weekly', ru:'Еженедельно' }, '一次性': { 'zh-TW':'一次性', en:'Once', ru:'Однократно' },
+    '周一': { 'zh-TW':'週一', en:'Mon', ru:'Пн' }, '周二': { 'zh-TW':'週二', en:'Tue', ru:'Вт' }, '周三': { 'zh-TW':'週三', en:'Wed', ru:'Ср' }, '周四': { 'zh-TW':'週四', en:'Thu', ru:'Чт' }, '周五': { 'zh-TW':'週五', en:'Fri', ru:'Пт' }, '周六': { 'zh-TW':'週六', en:'Sat', ru:'Сб' }, '周日': { 'zh-TW':'週日', en:'Sun', ru:'Вс' },
+    '未选认证': { 'zh-TW':'未選認證', en:'No auths selected', ru:'Авторизации не выбраны' }, '未选模型': { 'zh-TW':'未選模型', en:'No models selected', ru:'Модели не выбраны' },
+    '还没有定时预热任务': { 'zh-TW':'還沒有定時預熱任務', en:'No scheduled warmup tasks yet', ru:'Запланированных прогревов пока нет' },
+    '添加任务后，分别选择每天、每周或一次性、认证文件、模型和目标时间。': { 'zh-TW':'新增任務後，分別選擇每天、每週或一次性、認證檔、模型和目標時間。', en:'Add a task, then choose daily, weekly, or once, the auth files, models, and target time.', ru:'Добавьте задачу и выберите частоту, файлы авторизации, модели и время.' },
+    '预热任务': { 'zh-TW':'預熱任務', en:'Warmup task', ru:'Задача прогрева' }, '任务名称': { 'zh-TW':'任務名稱', en:'Task name', ru:'Название задачи' }, '启用此任务': { 'zh-TW':'啟用此任務', en:'Enable this task', ru:'Включить задачу' }, '删除任务': { 'zh-TW':'刪除任務', en:'Delete task', ru:'Удалить задачу' },
+    '频率': { 'zh-TW':'頻率', en:'Frequency', ru:'Частота' }, '星期': { 'zh-TW':'星期', en:'Weekdays', ru:'Дни недели' }, '选择星期': { 'zh-TW':'選擇星期', en:'Select weekdays', ru:'Выберите дни' }, '时区': { 'zh-TW':'時區', en:'Time zone', ru:'Часовой пояс' }, '预热时间': { 'zh-TW':'預熱時間', en:'Warmup time', ru:'Время прогрева' },
+    '认证文件': { 'zh-TW':'認證檔', en:'Auth files', ru:'Файлы авторизации' }, '选择认证文件': { 'zh-TW':'選擇認證檔', en:'Select auth files', ru:'Выберите файлы авторизации' }, '预热模型': { 'zh-TW':'預熱模型', en:'Warmup models', ru:'Модели прогрева' }, '选择预热模型': { 'zh-TW':'選擇預熱模型', en:'Select warmup models', ru:'Выберите модели прогрева' },
+    '每个认证仅预热一个支持的已选模型': { 'zh-TW':'每個認證僅預熱一個支援的已選模型', en:'Each auth warms up only one supported selected model', ru:'Каждая авторизация прогревает только одну подходящую модель' },
+    '额度窗口预热设置已保存': { 'zh-TW':'額度窗口預熱設定已儲存', en:'Quota window warmup settings saved', ru:'Настройки прогрева сохранены' },
+    '本页认证额度已从上游刷新': { 'zh-TW':'本頁認證額度已從上游刷新', en:'Auth quotas on this page refreshed from upstream', ru:'Квоты на странице обновлены из upstream' },
+    '即将删除：': { 'zh-TW':'即將刪除：', en:'About to delete: ', ru:'Будет удалено: ' },
+    '密钥已删除，历史使用统计已保留': { 'zh-TW':'密鑰已刪除，歷史使用統計已保留', en:'Key deleted; usage history kept', ru:'Ключ удалён; история использования сохранена' },
+    '请输入管理密钥': { 'zh-TW':'請輸入管理金鑰', en:'Enter the management key', ru:'Введите ключ управления' }, '已加载数据': { 'zh-TW':'已載入資料', en:'Data loaded', ru:'Данные загружены' },
+    '已清除本地管理密钥与 API 根地址': { 'zh-TW':'已清除本機管理金鑰與 API 根位址', en:'Cleared the local management key and API base URL', ru:'Локальный ключ управления и базовый URL API удалены' },
+    '认证额度已从缓存刷新（未请求上游）': { 'zh-TW':'認證額度已從快取刷新（未請求上游）', en:'Auth quotas reloaded from cache (upstream not called)', ru:'Квоты загружены из кэша (без запроса к upstream)' },
+    '数据已刷新': { 'zh-TW':'資料已重新整理', en:'Data refreshed', ru:'Данные обновлены' },
+    '概览已按当前条件刷新': { 'zh-TW':'概覽已按目前條件重新整理', en:'Overview refreshed with the current filters', ru:'Обзор обновлён по текущим фильтрам' }, '概览筛选已重置': { 'zh-TW':'概覽篩選已重設', en:'Overview filters reset', ru:'Фильтры обзора сброшены' },
+    '已加载代理模型，价格目录暂不可用': { 'zh-TW':'已載入代理模型，價格目錄暫不可用', en:'Proxy models loaded; price catalog unavailable', ru:'Модели прокси загружены; каталог цен недоступен' },
+    '已加载全部模型并同步新价格规则': { 'zh-TW':'已載入全部模型並同步新價格規則', en:'All models loaded and new pricing rules synced', ru:'Все модели загружены, новые правила цен синхронизированы' },
+    '加载失败：': { 'zh-TW':'載入失敗：', en:'Load failed: ', ru:'Ошибка загрузки: ' }, '同步失败：': { 'zh-TW':'同步失敗：', en:'Sync failed: ', ru:'Ошибка синхронизации: ' },
+    '规则 ID 与 pattern 必填': { 'zh-TW':'規則 ID 與 pattern 必填', en:'Rule ID and pattern are required', ru:'Нужны ID правила и pattern' }, '价格规则已保存': { 'zh-TW':'價格規則已儲存', en:'Pricing rule saved', ru:'Правило цены сохранено' },
+    '统计已按当前条件刷新': { 'zh-TW':'統計已按目前條件重新整理', en:'Stats refreshed with the current filters', ru:'Статистика обновлена по текущим фильтрам' }, '统计筛选已清除': { 'zh-TW':'統計篩選已清除', en:'Usage filters cleared', ru:'Фильтры статистики очищены' },
 
   };
   const textSources = new WeakMap();
@@ -337,7 +453,7 @@
     const key = canonicalSource(source);
     const locale = state.locale || 'zh-CN';
     if (locale === 'zh-CN') return key;
-    return (COPY[key] && COPY[key][locale]) || key;
+    return COPY[key] && COPY[key][locale] != null ? COPY[key][locale] : key;
   }
 
   function uiIcon(name) {
@@ -415,6 +531,7 @@
     document.title = t('CPA 额度管理');
     translateTree(document.body);
     refreshCustomControls();
+    syncTokenUnitSwitch();
     refreshDisplayUnits();
     const keyModal = $('keyModal');
     if (keyModal && keyModal.getAttribute('aria-hidden') !== 'true' && $('keyModalTokenLimits')) {
@@ -454,7 +571,12 @@
       if (theme !== state.theme) applyTheme(theme);
     }, 250);
     translationObserver = new MutationObserver(records => {
-      records.forEach(record => record.addedNodes.forEach(node => translateTree(node)));
+      records.forEach(record => record.addedNodes.forEach(node => {
+        if (node.nodeType !== Node.TEXT_NODE) return translateTree(node);
+        if (!node.parentElement || node.parentElement.closest('[data-no-i18n]')) return;
+        const key = canonicalSource(node.nodeValue);
+        if (COPY[key]) node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), () => t(key));
+      }));
     });
     translationObserver.observe(document.body, { childList:true, subtree:true });
     applyTheme(state.theme);
@@ -489,10 +611,15 @@
     return normalizeTokenUnit(state.tokenUnit || localStorage.getItem(TOKEN_UNIT_KEY) || 'raw');
   }
 
+  function displayTokenUnit() {
+    const unit = getTokenUnit();
+    return String(state.locale || 'zh-CN').startsWith('zh') ? unit : ({ qian: 'k', wan: 'w', baiwan: 'm' }[unit] || unit);
+  }
+
   function formatTokens(value) {
     const n = Number(value);
     if (!Number.isFinite(n)) return '—';
-    const unit = getTokenUnit();
+    const unit = displayTokenUnit();
     if (unit === 'raw') return Math.round(n).toLocaleString();
     const cfg = TOKEN_UNITS[unit];
     const scaled = n / cfg.div;
@@ -509,8 +636,8 @@
   }
 
   function syncTokenUnitSwitch() {
-    const unit = getTokenUnit();
-    state.tokenUnit = unit;
+    state.tokenUnit = getTokenUnit();
+    const unit = displayTokenUnit();
     document.querySelectorAll('#tokenUnitSwitch [data-token-unit]').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tokenUnit === unit);
     });
@@ -877,8 +1004,8 @@
   // Host management routes (/v0/management/*) use the remote-management secret,
   // not client API keys. Prefer this path for model discovery.
   async function hostManagementGET(path) {
-    const t = token();
-    if (!t) throw new Error('请先填写并保存宿主管理密钥');
+    const bearer = token();
+    if (!bearer) throw new Error('请先填写并保存宿主管理密钥');
     const url = managementURL(path);
     assertSameOriginRequest(url);
     let res;
@@ -886,12 +1013,12 @@
       res = await fetch(url, {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer ' + t,
+          'Authorization': 'Bearer ' + bearer,
           'Accept': 'application/json',
         },
       });
     } catch (e) {
-      throw new Error('网络失败: ' + (e && e.message ? e.message : e) + '。请检查 API 根地址是否可访问。');
+      throw new Error(t('网络失败') + ': ' + (e && e.message ? e.message : e) + t('。请检查 API 根地址是否可访问。'));
     }
     const text = await res.text();
     let data = null;
@@ -918,7 +1045,7 @@
     if (v1Error) {
       const msg = v1Error && v1Error.message ? v1Error.message : String(v1Error);
       if (/missing api key|invalid api key|unauthorized|401/i.test(msg)) {
-        throw new Error('无法通过管理接口发现模型，且 /v1/models 鉴权失败（' + msg + '）。请确认宿主已配置上游认证文件或 AI 提供商。');
+        throw new Error(t('无法通过管理接口发现模型，且 /v1/models 鉴权失败（') + msg + t('）。请确认宿主已配置上游认证文件或 AI 提供商。'));
       }
       throw v1Error;
     }
@@ -1031,14 +1158,14 @@
   }
 
   async function api(method, path, body) {
-    const t = token();
-    if (!t) throw new Error('请先填写并保存宿主管理密钥');
+    const bearer = token();
+    if (!bearer) throw new Error('请先填写并保存宿主管理密钥');
     const url = managementURL(path);
     assertSameOriginRequest(url);
     const opts = {
       method,
       headers: {
-        'Authorization': 'Bearer ' + t,
+        'Authorization': 'Bearer ' + bearer,
         'Accept': 'application/json',
       },
     };
@@ -1050,7 +1177,7 @@
     try {
       res = await fetch(url, opts);
     } catch (e) {
-      throw new Error('网络失败: ' + (e && e.message ? e.message : e) + '。请检查 API 根地址是否可访问，以及是否跨域被浏览器拦截。');
+      throw new Error(t('网络失败') + ': ' + (e && e.message ? e.message : e) + t('。请检查 API 根地址是否可访问，以及是否跨域被浏览器拦截。'));
     }
     const text = await res.text();
     let data = null;
@@ -1058,10 +1185,10 @@
     if (!res.ok) {
       const err = (data && (data.error || data.message)) || text || res.statusText || ('HTTP ' + res.status);
       if (res.status === 404) {
-        throw new Error('Not Found（404）：未找到管理接口 ' + url + '。请把「CLIProxyAPI 根地址」改成代理实际地址（如 http://127.0.0.1:8317），确认已部署最新 DLL 并重启宿主；密钥必须是宿主 management secret。');
+        throw new Error(t('Not Found（404）：未找到管理接口') + ' ' + url + t('。请把「CLIProxyAPI 根地址」改成代理实际地址（如 http://127.0.0.1:8317），确认已部署最新 DLL 并重启宿主；密钥必须是宿主 management secret。'));
       }
       if (res.status === 401 || res.status === 403) {
-        throw new Error((typeof err === 'string' ? err : JSON.stringify(err)) + '（管理密钥错误，或未允许远程管理）');
+        throw new Error((typeof err === 'string' ? err : JSON.stringify(err)) + t('（管理密钥错误，或未允许远程管理）'));
       }
       throw new Error(typeof err === 'string' ? err : JSON.stringify(err));
     }
@@ -1071,7 +1198,7 @@
   function customControlText(select) {
     if (select.multiple) {
       const chosen = [...select.options].filter(option => option.selected).map(option => option.textContent.trim());
-      return chosen.length ? chosen.join('、') : (select.dataset.emptyText || t('全部模型（默认）'));
+      return chosen.length ? chosen.join(t('、')) : t(select.dataset.emptyText || '全部模型（默认）');
     }
     return select.selectedOptions[0] ? select.selectedOptions[0].textContent.trim() : t('请选择');
   }
@@ -1747,7 +1874,7 @@
   function overviewModelUsage(items) {
     const usage = new Map();
     items.forEach(item => {
-      const name = item.model || '未标记模型';
+      const name = item.model || t('未标记模型');
       const current = usage.get(name) || {
         model: name, tokens: 0, requests: 0, cost: 0,
         cacheRead: 0, cacheRelated: 0, tpsSum: 0, tpsCount: 0,
@@ -1773,7 +1900,7 @@
     const rows = state.overview && state.overview.usage_by_model;
     if (!Array.isArray(rows) || !rows.length || !rows.some(row => 'cache_related_tokens' in row)) return overviewModelUsage(items || []);
     return rows.map(row => ({
-      model: row.model || '未标记模型',
+      model: row.model || t('未标记模型'),
       tokens: Number(row.total_tokens || 0),
       requests: Number(row.request_count || 0),
       cost: Number(row.cost_micro_usd || 0),
@@ -1805,8 +1932,8 @@
 
   function modelShareCenterLabel(metric) {
     if (metric === 'tokens') return 'Token';
-    if (metric === 'cost') return '费用';
-    return '请求次数';
+    if (metric === 'cost') return t('费用');
+    return t('请求次数');
   }
 
   function syncModelShareMetricSwitch() {
@@ -1913,7 +2040,7 @@
     refreshCustomControl(select);
     try {
       await reload();
-      flash('已下钻到模型：' + name, true);
+      flash(t('已下钻到模型：') + name, true);
     } catch (e) { flash(e.message, false); }
   }
 
@@ -2116,7 +2243,7 @@
     [['overviewModelFilter', '全部已使用模型'], ['usageModelFilter', '全部已使用模型'], ['authQuotaProviderFilter', '全部平台'], ['priceModelPicker', '加载后选择模型']].forEach(([id, label]) => {
       const select = $(id);
       if (!select) return;
-      select.innerHTML = '<option value="">'+label+'</option>';
+      select.innerHTML = '<option value="">'+esc(t(label))+'</option>';
       select.value = '';
     });
     closeKeySearch('overview');
@@ -2342,7 +2469,7 @@
         formatter(params) {
           const rows = params.map(param => {
             const item = series[param.seriesIndex];
-            return param.marker + item.label + '<span style="float:right;margin-left:20px;font-weight:700">' + item.format(param.value, points[param.dataIndex]) + '</span>';
+            return param.marker + esc(t(item.label)) + '<span style="float:right;margin-left:20px;font-weight:700">' + item.format(param.value, points[param.dataIndex]) + '</span>';
           });
           return '<div style="min-width:150px"><strong>'+esc(params[0].axisValue)+'</strong><div style="height:6px"></div>' + rows.join('<br/>') + '</div>';
         },
@@ -2422,7 +2549,7 @@
         (totalCacheRelated > 0 ? trendMetric('命中', avgHit.toFixed(1) + '%', '#e56b8a', '', '缓存命中率', true) : '')
       : '';
     $('overviewTrendHint').textContent = points.length
-      ? points.length + ' 个有使用记录的' + trendGrainUnit(grain) + trendZoneSuffix()
+      ? points.length + ' ' + t('个有使用记录的' + trendGrainUnit(grain)) + trendZoneSuffix()
       : '输入 / 输出 / 缓存读取 / 缓存命中率';
     syncTrendGrainSwitch();
     renderOverviewLineChart({
@@ -2469,8 +2596,8 @@
     const total = points.reduce((sum, point) => sum + point.cost, 0);
     $('overviewCostTrendTotal').innerHTML = points.length ? trendMetric('费用', formatMoney(total), '#1eb787', '', '费用') : '';
     $('overviewCostTrendHint').textContent = points.length
-      ? points.length + ' 个有使用记录的' + trendGrainUnit(grain) + trendZoneSuffix()
-      : '按' + trendGrainUnit(grain) + '汇总实际费用';
+      ? points.length + ' ' + t('个有使用记录的' + trendGrainUnit(grain)) + trendZoneSuffix()
+      : t('按' + trendGrainUnit(grain) + '汇总实际费用');
     syncTrendGrainSwitch();
     renderOverviewLineChart({
       targetID: 'overviewCostTrend',
@@ -2538,7 +2665,7 @@
       b.requests - a.requests ||
       a.model.localeCompare(b.model)
     );
-    $('overviewModelCount').textContent = models.length ? models.length + ' 个模型' : '';
+    $('overviewModelCount').textContent = models.length ? models.length + ' ' + t('个模型') : '';
     $('overviewModelCount').hidden = !models.length;
     syncModelShareMetricSwitch();
     if (!models.length) {
@@ -2632,7 +2759,7 @@
     const hint = $('overviewRankHint');
     syncModelRankMetricSwitch();
     if (hint) hint.textContent = t(spec.hint);
-    if (count) { count.textContent = models.length ? models.length + ' 个模型' : ''; count.hidden = !models.length; }
+    if (count) { count.textContent = models.length ? models.length + ' ' + t('个模型') : ''; count.hidden = !models.length; }
     if (!target) return;
     if (!models.length) {
       target.innerHTML = chartEmptyState(t('当前筛选条件下暂无模型效率数据'), false, 'trophy');
@@ -2696,10 +2823,10 @@
     const filter = getOverviewFilterValues();
     const rangeText = $('overviewRangeFilter').selectedOptions[0].textContent;
     const labels = [rangeText];
-    if (filter.plugin_key_id) labels.push('指定密钥');
-    if (filter.auth_id || filter.auth_index || filter.auth_account) labels.push('账号');
-    if (filter.model) labels.push('模型: ' + filter.model);
-    if (filter.source) labels.push('来源: ' + filter.source);
+    if (filter.plugin_key_id) labels.push(t('指定密钥'));
+    if (filter.auth_id || filter.auth_index || filter.auth_account) labels.push(t('账号'));
+    if (filter.model) labels.push(t('模型') + ': ' + filter.model);
+    if (filter.source) labels.push(t('来源') + ': ' + filter.source);
     $('overviewFilterState').textContent = labels.join(' · ');
     $('overviewStats').innerHTML = [
       ['key', '密钥数 / 可用', keys.length + ' / ' + activeKeys],
@@ -2765,8 +2892,11 @@
 
     const tokenLimitLabel = (period) => {
       const tokens = Number(period && period.tokens || 0);
-      if (tokens > 0) return formatTokens(tokens);
-      return t('不限制');
+      const spend = Number(period && period.micro_usd || 0);
+      const parts = [];
+      if (tokens > 0) parts.push(formatTokens(tokens));
+      if (spend > 0) parts.push(money(spend));
+      return parts.length ? parts.join(' · ') : t('不限制');
     };
     const modelChips = (models, tokenLimits, unmatchedMode) => {
       const chips = (!models || !models.length)
@@ -2774,7 +2904,7 @@
         : models.slice(0, 3).map(m => '<span class="model-chip" title="'+esc(m)+'">'+esc(m)+'</span>').join('') + (models.length > 3 ? '<span class="model-chip">+'+ (models.length - 3) +'</span>' : '');
       const limits = tokenLimits || [];
       const unmatched = unmatchedMode === 'disabled' ? t('未匹配：拒绝调用') : t('未匹配：允许调用');
-      const limitChip = '<span class="token-limit-chip'+(unmatchedMode === 'disabled' ? ' warn' : '')+'" title="'+esc((limits.length ? limits.map(item => item.model+' '+t('日')+' '+tokenLimitLabel(item.daily)+' / '+t('周')+' '+tokenLimitLabel(item.weekly)+' / '+t('月')+' '+tokenLimitLabel(item.monthly)).join('\n')+'\n' : '') + unmatched)+'">'+esc((limits.length ? limits.length + ' ' + t('模型 Token 限制') + ' · ' : '') + unmatched)+'</span>';
+      const limitChip = '<span class="token-limit-chip'+(unmatchedMode === 'disabled' ? ' warn' : '')+'" title="'+esc((limits.length ? limits.map(item => item.model+' '+t('日')+' '+tokenLimitLabel(item.daily)+' / '+t('周')+' '+tokenLimitLabel(item.weekly)+' / '+t('月')+' '+tokenLimitLabel(item.monthly)+' / '+t('总额度')+' '+tokenLimitLabel(item.total)).join('\n')+'\n' : '') + unmatched)+'">'+esc((limits.length ? limits.length + ' ' + t('模型 Token 限制') + ' · ' : '') + unmatched)+'</span>';
       return '<div>' + '<div class="model-chip-row">' + chips + '</div>' + limitChip + '</div>';
     };
 
@@ -2949,7 +3079,7 @@
   }
 
   function keyFilterDisplayLabel(key) {
-    return (key.label || '(无标签)') + (key.revoked_at ? '（已删除）' : '');
+    return (key.label || t('(无标签)')) + (key.revoked_at ? t('（已删除）') : '');
   }
 
   function keyFilterLabel(key) {
@@ -2968,7 +3098,7 @@
     const matches = keySearchMatches(input.value);
     panel.innerHTML = matches.length ? matches.map(key =>
       '<button class="key-search-option'+(key.revoked_at ? ' revoked' : '')+'" type="button" data-key-id="'+esc(key.id)+'" title="'+esc(key.id)+'">' +
-        '<span class="key-search-label">'+esc(key.label || '(无标签)')+'</span>' +
+        '<span class="key-search-label" data-revoked-label="'+esc(t('已删除'))+'">'+esc(key.label || t('(无标签)'))+'</span>' +
       '</button>'
     ).join('') : '<div class="key-search-empty">未找到匹配的密钥</div>';
     panel.querySelectorAll('[data-key-id]').forEach(button => button.addEventListener('click', () => {
@@ -3198,7 +3328,7 @@
       const key = state.keys.find(item => item.id === id);
       $('keyPlaintext').textContent = result.plaintext || '';
       $('keyPlainResult').classList.remove('hidden');
-      $('keyModalHint').textContent = '正在查看「' + (key && key.label || '密钥') + '」的明文凭据；可复制后继续管理。';
+      $('keyModalHint').textContent = t('正在查看「') + (key && key.label || t('密钥')) + t('」的明文凭据；可复制后继续管理。');
       flash('已读取加密保存的密钥明文', true);
     } catch (e) { flash(e.message, false); }
   }
@@ -3238,9 +3368,11 @@
   function tokenLimitPeriodValue(period) {
     period = period || {};
     const tokens = Number(period.tokens || 0);
+    const spend = Number(period.micro_usd || 0);
     return {
       tokens: Number.isFinite(tokens) && tokens > 0 ? Math.floor(tokens) : 0,
       mode: 'unlimited',
+      micro_usd: Number.isFinite(spend) && spend > 0 ? Math.round(spend) : 0,
     };
   }
 
@@ -3287,6 +3419,7 @@
         return tokenLimitPeriodValue({
           tokens: period.querySelector('[data-tokens]').value,
           mode: period.dataset.mode,
+          micro_usd: Number(row.querySelector('[data-spend-period="'+name+'"] input').value || 0) * 1e6,
         });
       };
       return { model: row.dataset.model, total: read('total'), daily: read('daily'), weekly: read('weekly'), monthly: read('monthly') };
@@ -3310,6 +3443,11 @@
       return '<div class="token-limit-period'+(capped ? ' is-capped' : '')+'" data-period="'+name+'" data-mode="'+value.mode+'"><span>'+esc(t(label))+'</span>' +
         '<input type="number" min="1" step="1" inputmode="numeric" data-tokens placeholder="'+esc(t('留空 = 不限制'))+'" value="'+(capped ? value.tokens : '')+'"'+(disabled ? ' disabled' : '')+'/></div>';
     };
+    const spendField = (name, label, period) => {
+      const value = tokenLimitPeriodValue(period);
+      return '<div class="token-limit-period'+(value.micro_usd > 0 ? ' is-capped' : '')+'" data-spend-period="'+name+'"><span>'+esc(t(label))+'</span>' +
+        '<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="'+esc(t('0 或留空 = 不限制'))+'" value="'+(value.micro_usd > 0 ? value.micro_usd / 1e6 : '')+'"'+(disabled ? ' disabled' : '')+'/></div>';
+    };
     target.innerHTML = items.map(item => {
       const model = String(item.model || '').trim();
       return '<div class="token-limit-row" data-model="'+esc(model)+'">' +
@@ -3320,6 +3458,11 @@
           periodField('weekly', '周 Token', item.weekly) +
           periodField('monthly', '月 Token', item.monthly) +
           periodField('total', '总 Token', item.total) +
+        '</div><div class="token-limit-periods">' +
+          spendField('daily', '日额度（USD）', item.daily) +
+          spendField('weekly', '周额度（USD）', item.weekly) +
+          spendField('monthly', '月额度（USD）', item.monthly) +
+          spendField('total', '总额度（USD）', item.total) +
         '</div></div>';
     }).join('');
     target.querySelectorAll('.token-limit-period').forEach(syncTokenLimitPeriod);
@@ -3443,7 +3586,7 @@
       state.availableModels = modelIDs(available);
       setKeyModels(selectedModels);
     } catch (e) {
-      $('keyModalModelsHint').textContent = '模型目录加载失败：' + e.message + '。可稍后重新打开弹窗。';
+      $('keyModalModelsHint').textContent = t('模型目录加载失败：') + t(e.message) + t('。可稍后重新打开弹窗。');
     }
   }
 
@@ -3533,7 +3676,7 @@
     $('pricePerImage').value = Number(priceValue(price, 'PerImage', 'per_image') || 0) / 1e6;
     $('priceEnabled').checked = ruleEnabled(rule);
     $('priceModelPicker').value = '';
-    $('modelPriceStatus').textContent = rule ? '正在编辑「' + id + '」' : '价格来源：models.dev';
+    $('modelPriceStatus').textContent = rule ? t('正在编辑「') + id + t('」') : t('价格来源：models.dev');
     fillPriceTiers(ruleTiers(rule));
     syncPriceBillingFields();
     refreshCustomControls();
@@ -4002,8 +4145,8 @@
       $('priceAccountingMode').value = /claude|anthropic/i.test(modelID) ? 'input_excludes_cache' : 'input_includes_cache';
       $('pricePerImage').value = 0;
       $('modelPriceStatus').textContent = item.imageGen
-        ? '已回填 ' + modelID + ' 的 Token 价（图片输出按 Token，不是按张），来源：models.dev / ' + item.provider + '。'
-        : '已回填 ' + modelID + ' 的价格，来源：models.dev / ' + item.provider + '。请核对后保存。';
+        ? t('已回填') + ' ' + modelID + ' ' + t('的 Token 价（图片输出按 Token，不是按张），来源：models.dev /') + ' ' + item.provider + t('。')
+        : t('已回填') + ' ' + modelID + ' ' + t('的价格，来源：models.dev /') + ' ' + item.provider + t('。请核对后保存。');
       fillPriceTiers(collectPriceTiers().filter(tier => tier.kind === 'service'), item.cost);
     } else {
       $('priceBillingMode').value = 'per_image';
@@ -4013,7 +4156,7 @@
       $('priceCacheCreation').value = 0;
       $('priceAccountingMode').value = '';
       $('pricePerImage').value = 0;
-      $('modelPriceStatus').textContent = '「' + modelID + '」是出图模型，不能套用 Token 价。请填写每张 USD 后保存。';
+      $('modelPriceStatus').textContent = t('「') + modelID + t('」是出图模型，不能套用 Token 价。请填写每张 USD 后保存。');
     }
     syncPriceBillingFields();
   }
@@ -4144,14 +4287,14 @@
       const tokenCount = Object.values(prices).filter(item => item.tokenPriced).length;
       const imageCount = Object.values(prices).filter(item => item.imageGen && !item.tokenPriced).length;
       $('modelCatalogCount').textContent = models.length + ' ' + t('个模型');
-      const coverageText = tokenCount + ' 个 Token 价' + (imageCount ? ' · ' + imageCount + ' 个出图模型' : '');
-      const syncText = '新增 ' + sync.saved + ' 条，保留 ' + sync.skipped + ' 条规则' + (sync.failed.length ? '，失败 ' + sync.failed.length + ' 条' : '');
-      const ambiguousText = ambiguous.length ? '；' + ambiguous.length + ' 个未自动匹配' : '';
+      const coverageText = tokenCount + ' ' + t('个 Token 价') + (imageCount ? ' · ' + imageCount + ' ' + t('个出图模型') : '');
+      const syncText = t('新增') + ' ' + sync.saved + ' ' + t('条，保留') + ' ' + sync.skipped + ' ' + t('条规则') + (sync.failed.length ? t('，失败') + ' ' + sync.failed.length + ' ' + t('条') : '');
+      const ambiguousText = ambiguous.length ? t('；') + ambiguous.length + ' ' + t('个未自动匹配') : '';
       status.textContent = catalogError
-        ? (coverageText + '；价格目录暂不可用，仍可手动设置价格。')
-        : (coverageText + '；' + syncText + ambiguousText + '。');
+        ? (coverageText + t('；价格目录暂不可用，仍可手动设置价格。'))
+        : (coverageText + t('；') + syncText + ambiguousText + t('。'));
       renderPricing((state.overview && state.overview.pricing) || []);
-      if (sync.failed.length) throw new Error('部分 models.dev 价格未保存：' + sync.failed.join('；'));
+      if (sync.failed.length) throw new Error(t('部分 models.dev 价格未保存：') + sync.failed.join(t('；')));
     } finally {
       button.disabled = false;
     }
@@ -4160,7 +4303,7 @@
   async function loadModelPrices() {
     await loadModelCatalog();
     $('modelPriceStatus').textContent = state.modelCatalogError
-      ? ('价格目录暂不可用：' + state.modelCatalogError + '。仍可手动设置价格。')
+      ? (t('价格目录暂不可用：') + t(state.modelCatalogError) + t('。仍可手动设置价格。'))
       : '模型目录与价格规则已同步。选择模型可查看或调整 models.dev 价格。';
   }
 
@@ -4358,13 +4501,13 @@
         pricingMetricCell('缓存读', pricingAmountOrDash(cost.cache_read, formatModelsDevUSD)) +
         pricingMetricCell('缓存写', pricingAmountOrDash(cost.cache_write, formatModelsDevUSD)) +
         '</div>' +
-        (tiers.length ? '<div class="price-tier-badge" title="'+esc(t('阶梯价详情请在编辑中查看'))+'">'+tiers.length+' 档阶梯</div>' : '') +
+        (tiers.length ? '<div class="price-tier-badge" title="'+esc(t('阶梯价详情请在编辑中查看'))+'">'+tiers.length+' '+esc(t('档阶梯'))+'</div>' : '') +
         '</div>';
     }
     if (imageGen) {
       return '<div class="pricing-rule-block">' +
         '<div class="price-metrics price-metrics-single">' +
-        pricingMetricCell('每张', pricingDash()) +
+        pricingMetricCell(t('每张'), pricingDash()) +
         '</div>' +
         '<div class="price-tier-badge" title="'+esc(t('按张计费，不能套用 Token 价'))+'">按张 · 无 Token 参考价</div>' +
         '</div>';
@@ -4395,7 +4538,7 @@
     return '<div class="pricing-rule-block">' +
       (id ? '<div class="pricing-rule-id mono" title="'+esc(id)+'">'+esc(id)+'</div>' : '') +
       metrics +
-      (billing !== 'per_image' && tiers.length ? '<div class="price-tier-badge">'+tiers.length+' 档阶梯</div>' : '') +
+      (billing !== 'per_image' && tiers.length ? '<div class="price-tier-badge">'+tiers.length+' '+esc(t('档阶梯'))+'</div>' : '') +
       '</div>';
   }
 
@@ -4443,7 +4586,7 @@
       if (!rule) loadModelPrice(modelID);
     }));
     $('pricingTable').querySelectorAll('[data-del-price]').forEach(btn => btn.addEventListener('click', async () => {
-      if (!confirm('删除价格规则 ' + btn.dataset.delPrice + ' ?')) return;
+      if (!confirm(t('删除价格规则') + ' ' + btn.dataset.delPrice + ' ?')) return;
       try {
         await api('POST', 'credit-manager/pricing/delete', { id: btn.dataset.delPrice });
         flash('已删除价格规则', true);
@@ -4540,18 +4683,18 @@
     const filter = getUsageFilterValues();
     const rangeText = $('usageRangeFilter').selectedOptions[0].textContent;
     if (rangeText) filterLabels.push(rangeText);
-    if (filter.plugin_key_id) filterLabels.push('密钥');
-    if (filter.auth_id || filter.auth_index || filter.auth_account) filterLabels.push('账号');
-    if (filter.model) filterLabels.push('模型: ' + filter.model);
-    if (filter.source) filterLabels.push('来源: ' + filter.source);
-    if (filter.min_cost_micro_usd || filter.max_cost_micro_usd) filterLabels.push('费用范围');
-    if (filter.min_tokens || filter.max_tokens) filterLabels.push('Token 范围');
+    if (filter.plugin_key_id) filterLabels.push(t('密钥'));
+    if (filter.auth_id || filter.auth_index || filter.auth_account) filterLabels.push(t('账号'));
+    if (filter.model) filterLabels.push(t('模型') + ': ' + filter.model);
+    if (filter.source) filterLabels.push(t('来源') + ': ' + filter.source);
+    if (filter.min_cost_micro_usd || filter.max_cost_micro_usd) filterLabels.push(t('费用范围'));
+    if (filter.min_tokens || filter.max_tokens) filterLabels.push(t('Token 范围'));
     $('usageFilterState').textContent = filterLabels.length ? filterLabels.join(' · ') : '未设置筛选';
 
-    $('usageByKey').innerHTML = byKey.length ? '<div class="table-scroll"><table><thead><tr><th>密钥</th><th>请求数</th><th>费用 '+esc(currencyCode())+'</th><th>in/out tokens</th></tr></thead><tbody>' +
+    $('usageByKey').innerHTML = byKey.length ? '<div class="table-scroll"><table><thead><tr><th>密钥</th><th>请求数</th><th>'+esc(t('费用'))+' '+esc(currencyCode())+'</th><th>in/out tokens</th></tr></thead><tbody>' +
       byKey.map(x => '<tr><td><div><strong>'+esc(x.label||'(无标签)')+'</strong></div></td><td>'+esc(x.req)+'</td><td title="'+esc(moneyTitle(x.cost))+'">'+esc(formatMoney(x.cost))+'</td><td title="'+esc(tokenTitle(x.inn)+' / '+tokenTitle(x.out))+'">'+esc(formatTokens(x.inn))+' / '+esc(formatTokens(x.out))+'</td></tr>').join('') +
       '</tbody></table></div><p class="table-swipe-hint">左右滑动查看完整汇总</p>' : emptyState('当前筛选条件下暂无按密钥汇总');
-    $('usageByModel').innerHTML = byModel.length ? '<div class="table-scroll"><table><thead><tr><th>模型</th><th>请求数</th><th>费用 '+esc(currencyCode())+'</th><th>in/out tokens</th></tr></thead><tbody>' +
+    $('usageByModel').innerHTML = byModel.length ? '<div class="table-scroll"><table><thead><tr><th>模型</th><th>请求数</th><th>'+esc(t('费用'))+' '+esc(currencyCode())+'</th><th>in/out tokens</th></tr></thead><tbody>' +
       byModel.map(x => '<tr><td class="mono">'+esc(x.model)+'</td><td>'+esc(x.req)+'</td><td title="'+esc(moneyTitle(x.cost))+'">'+esc(formatMoney(x.cost))+'</td><td title="'+esc(tokenTitle(x.inn)+' / '+tokenTitle(x.out))+'">'+esc(formatTokens(x.inn))+' / '+esc(formatTokens(x.out))+'</td></tr>').join('') +
       '</tbody></table></div><p class="table-swipe-hint">左右滑动查看完整汇总</p>' : emptyState('当前筛选条件下暂无按模型汇总');
     const formatOptional = (value, formatter) => value == null || value === '' ? '—' : formatter(value);
@@ -4589,7 +4732,7 @@
       return '<td class="mono model" title="'+esc(title)+'"><div class="usage-model-request">'+esc(model)+'</div><div class="usage-model-upstream">&#8627; '+esc(t('上游响应'))+': '+esc(upstream)+' <span class="badge '+badgeClass+' upstream-model-mismatch">'+esc(label)+'</span></div></td>';
     };
 
-    $('usageRecent').innerHTML = items.length ? '<div class="table-scroll"><table class="usage-table"><thead><tr><th>时间</th><th>账号</th><th>模型名称</th><th>来源</th><th>执行器</th><th>结果</th><th>首字延迟</th><th>生成时间</th><th>TPS</th><th>思考强度</th><th>输入</th><th>输出</th><th>思考</th><th>缓存读取</th><th>缓存创建</th><th>总 Token 数</th><th>缓存命中</th><th>费用 '+esc(currencyCode())+'</th></tr></thead><tbody>' +
+    $('usageRecent').innerHTML = items.length ? '<div class="table-scroll"><table class="usage-table"><thead><tr><th>时间</th><th>账号</th><th>模型名称</th><th>来源</th><th>执行器</th><th>结果</th><th>首字延迟</th><th>生成时间</th><th>TPS</th><th>思考强度</th><th>输入</th><th>输出</th><th>思考</th><th>缓存读取</th><th>缓存创建</th><th>总 Token 数</th><th>缓存命中</th><th>'+esc(t('费用'))+' '+esc(currencyCode())+'</th></tr></thead><tbody>' +
       items.map(u => {
         const settledCost = u.cost_micro_usd;
         const cell = (value) => '<td title="'+esc(tokenTitle(value))+'">'+esc(formatTokens(value))+'</td>';
@@ -4984,7 +5127,7 @@
       if (id === 'weekly') return t('周限额');
       if (id === 'monthly') return t('月额度');
       if (id === 'on-demand' || id.includes('on-demand')) return t('按量付费');
-      if (String(authQuotaValue(window, 'scope') || '') === 'product') return label + ' 使用';
+      if (String(authQuotaValue(window, 'scope') || '') === 'product') return label + ' ' + t('用量');
     }
     if (grouped) {
       const period = authQuotaPeriodLabel(window);
@@ -5054,7 +5197,7 @@
     const resetText = authQuotaResetRelative(window, kind);
     return '<section class="auth-quota-window-card">'+
       '<div class="auth-quota-window-head"><div class="auth-quota-window-name" title="'+esc(label)+'">'+esc(name)+'</div><div class="auth-quota-window-meta"><span class="auth-quota-window-pct">'+esc(progress)+'</span>'+(resetText ? '<span class="auth-quota-window-reset" title="'+esc(t('重置时间')+' '+authQuotaTime(authQuotaValue(window, 'resets_at')))+'">'+esc(resetText)+'</span>' : '')+'</div></div>'+
-      '<div class="auth-quota-bar '+progressClass+'" style="--quota-progress:'+ratio.remainingPercent+'%" role="progressbar" aria-valuemin="0" aria-valuemax="100"'+(ratio.known ? ' aria-valuenow="'+ratio.remainingPercent+'"' : '')+' aria-label="'+esc(label)+' '+progress+'"></div>'+
+      '<div class="auth-quota-bar '+progressClass+'" style="--quota-progress:'+ratio.remainingPercent+'%" role="progressbar" aria-valuemin="0" aria-valuemax="100"'+(ratio.known ? ' aria-valuenow="'+ratio.remainingPercent+'"' : '')+' aria-label="'+esc(t(label)+' '+progress)+'"></div>'+
       '</section>';
   }
 
@@ -5273,9 +5416,9 @@
     });
     if (!idle && !stale) return '';
     const parts = [];
-    if (idle) parts.push(idle + ' 个未同步');
-    if (stale) parts.push(stale + ' 个缓存过期');
-    const summary = parts.join('，');
+    if (idle) parts.push(idle + ' ' + t('个未同步'));
+    if (stale) parts.push(stale + ' ' + t('个缓存过期'));
+    const summary = parts.join(t('，'));
     const busy = !!state.authQuotaPageRefreshing;
     return '<div class="auth-quota-status-banner" role="status">'
       + '<div class="auth-quota-status-banner-copy"><strong>'+esc(summary)+'</strong>'
@@ -5356,7 +5499,7 @@
       const availableEmpty = costs.available === '—';
       const remainingTitle = remainingEmpty ? forecastHint : costs.remaining;
       const availableTitle = availableEmpty ? forecastHint : costs.available;
-      return '<article class="card auth-quota-card'+(refreshing ? ' is-refreshing' : '')+(needsUpstream ? ' needs-upstream' : '')+'" data-provider="'+esc(provider || 'unknown')+'"><header class="auth-quota-header"><div class="auth-quota-identity"><div class="auth-quota-identity-row"><div class="auth-quota-identity-main"><span class="auth-quota-provider-icon" aria-hidden="true">'+authQuotaProviderIcon(provider)+'</span><p class="auth-quota-provider'+(authQuotaProviderIsBrand(provider) ? '' : ' is-custom')+'" title="'+esc(provider || t('未知提供商'))+'">'+esc(authQuotaProviderName(provider))+'</p>'+planLabel+'</div><span class="badge '+badge.tone+'">'+esc(badge.text)+'</span></div><div class="auth-quota-account-row"><h2 class="auth-quota-title" title="'+esc(authQuotaValue(item, 'display_name') || t('未命名认证'))+'">'+esc(authQuotaValue(item, 'display_name') || t('未命名认证'))+'</h2><p class="auth-quota-sync" title="上次同步 '+esc(authQuotaTime(authQuotaValue(item, 'last_success_at')))+'"><span class="auth-quota-sync-icon" aria-hidden="true">'+authQuotaIcon('clock')+'</span><span>同步</span> '+esc(authQuotaShortTime(authQuotaValue(item, 'last_success_at')))+'</p></div>'+ (warmupStatus ? '<div class="auth-quota-warmup-row">'+warmupStatus+'</div>' : '') +'</div><div class="auth-quota-cost-grid"><div class="auth-quota-cost"><span>'+authQuotaIcon('coin')+esc(t('当前费用'))+'</span><strong title="'+esc(costs.used)+'">'+esc(costs.used)+'</strong></div><div class="auth-quota-cost'+(remainingEmpty ? ' is-muted' : '')+'" title="'+esc(remainingTitle)+'"><span>'+authQuotaIcon('wallet')+esc(t('预估剩余'))+'</span><strong title="'+esc(remainingTitle)+'">'+esc(costs.remaining)+'</strong></div><div class="auth-quota-cost'+(availableEmpty ? ' is-muted' : '')+'" title="'+esc(availableTitle)+'"><span>'+authQuotaIcon('trend')+esc(t('预计可用'))+'</span><strong title="'+esc(availableTitle)+'">'+esc(costs.available)+'</strong></div>'+concurrentInput+'</div><div class="auth-quota-header-tools">'+weekSelect+'<div class="auth-quota-actions">'+warmupBtn+reloadBtn+'</div></div></header>'+(error ? '<div class="auth-quota-error">'+esc(error)+'</div>' : '')+'<div class="auth-quota-window-grid">'+cards+'</div></article>';
+      return '<article class="card auth-quota-card'+(refreshing ? ' is-refreshing' : '')+(needsUpstream ? ' needs-upstream' : '')+'" data-provider="'+esc(provider || 'unknown')+'"><header class="auth-quota-header"><div class="auth-quota-identity"><div class="auth-quota-identity-row"><div class="auth-quota-identity-main"><span class="auth-quota-provider-icon" aria-hidden="true">'+authQuotaProviderIcon(provider)+'</span><p class="auth-quota-provider'+(authQuotaProviderIsBrand(provider) ? '' : ' is-custom')+'" title="'+esc(provider || t('未知提供商'))+'">'+esc(authQuotaProviderName(provider))+'</p>'+planLabel+'</div><span class="badge '+badge.tone+'">'+esc(badge.text)+'</span></div><div class="auth-quota-account-row"><h2 class="auth-quota-title" title="'+esc(authQuotaValue(item, 'display_name') || t('未命名认证'))+'">'+esc(authQuotaValue(item, 'display_name') || t('未命名认证'))+'</h2><p class="auth-quota-sync" title="'+esc(t('上次同步')+' '+authQuotaTime(authQuotaValue(item, 'last_success_at')))+'"><span class="auth-quota-sync-icon" aria-hidden="true">'+authQuotaIcon('clock')+'</span><span>同步</span> '+esc(authQuotaShortTime(authQuotaValue(item, 'last_success_at')))+'</p></div>'+ (warmupStatus ? '<div class="auth-quota-warmup-row">'+warmupStatus+'</div>' : '') +'</div><div class="auth-quota-cost-grid"><div class="auth-quota-cost"><span>'+authQuotaIcon('coin')+esc(t('当前费用'))+'</span><strong title="'+esc(costs.used)+'">'+esc(costs.used)+'</strong></div><div class="auth-quota-cost'+(remainingEmpty ? ' is-muted' : '')+'" title="'+esc(remainingTitle)+'"><span>'+authQuotaIcon('wallet')+esc(t('预估剩余'))+'</span><strong title="'+esc(remainingTitle)+'">'+esc(costs.remaining)+'</strong></div><div class="auth-quota-cost'+(availableEmpty ? ' is-muted' : '')+'" title="'+esc(availableTitle)+'"><span>'+authQuotaIcon('trend')+esc(t('预计可用'))+'</span><strong title="'+esc(availableTitle)+'">'+esc(costs.available)+'</strong></div>'+concurrentInput+'</div><div class="auth-quota-header-tools">'+weekSelect+'<div class="auth-quota-actions">'+warmupBtn+reloadBtn+'</div></div></header>'+(error ? '<div class="auth-quota-error">'+esc(error)+'</div>' : '')+'<div class="auth-quota-window-grid">'+cards+'</div></article>';
     }).join('');
     $('authQuotaList').innerHTML = authQuotaStatusBanner(items) + cardsHtml;
   }
@@ -5371,9 +5514,9 @@
     const input = Number(authQuotaValue(warmup, 'input_tokens') || 0);
     const output = Number(authQuotaValue(warmup, 'output_tokens') || 0);
     const observed = status === 'succeeded' && !!authQuotaValue(warmup, 'window_observed');
-    const errorText = errorLabels[error] || error;
-    const usageText = status === 'succeeded' ? (input+' 输入 / '+output+' 输出') : '';
-    const detail = [labels[status] || status, model, usageText, errorText].filter(Boolean).join(' · ');
+    const errorText = t(errorLabels[error] || error);
+    const usageText = status === 'succeeded' ? (input+' '+t('输入')+' / '+output+' '+t('输出')) : '';
+    const detail = [t(labels[status] || status), model, usageText, errorText].filter(Boolean).join(' · ');
     const time = completed ? '<time>'+esc(authQuotaShortTime(completed))+'</time>' : '';
     if (status === 'failed') {
       return '<p class="auth-quota-warmup-status is-failed" title="'+esc(detail)+'"><span class="auth-quota-warmup-main"><span>预热失败</span><em class="auth-quota-warmup-error">'+esc(errorText || '上游执行失败')+'</em></span>'+time+'</p>';
@@ -5553,7 +5696,7 @@
       const result = await api('POST', 'credit-manager/auth-quotas/concurrency/batch', payload);
       await loadAuthQuotas();
       closeAuthQuotaBatchModal(true);
-      flash('已更新 '+(Number(authQuotaValue(result, 'updated') || 0))+' 个认证的并发', true);
+      flash(t('已更新')+' '+(Number(authQuotaValue(result, 'updated') || 0))+' '+t('个认证的并发'), true);
     } catch (e) {
       flash(e.message, false);
     } finally {
@@ -5663,12 +5806,12 @@
     const selectedSet = new Set((selected || []).map(authWarmupAuthKey));
     return authWarmupAuthOptions(selected).map(([key, auth]) => {
       const provider = String(authQuotaValue(auth, 'provider') || '').toUpperCase();
-      const label = authQuotaValue(auth, 'label') || authQuotaValue(auth, 'display_name') || authQuotaValue(auth, 'auth_id') || '未命名认证';
+      const label = authQuotaValue(auth, 'label') || authQuotaValue(auth, 'display_name') || authQuotaValue(auth, 'auth_id') || t('未命名认证');
       return '<option value="'+esc(key)+'"'+(selectedSet.has(key) ? ' selected' : '')+'>'+esc(label+(provider ? ' · '+provider : ''))+'</option>';
     }).join('');
   }
   function authWarmupFrequencyOptions(selected) {
-    return [['daily','每天'],['weekly','每周'],['once','单次']].map(([value, label]) => '<option value="'+value+'"'+(value === selected ? ' selected' : '')+'>'+label+'</option>').join('');
+    return [['daily','每天'],['weekly','每周'],['once','一次性']].map(([value, label]) => '<option value="'+value+'"'+(value === selected ? ' selected' : '')+'>'+label+'</option>').join('');
   }
   function authWarmupWeekdayOptions(selected) {
     const selectedSet = new Set((selected || []).map(String));
@@ -5701,7 +5844,7 @@
       });
     } catch (_) {}
     if (!zones.includes(selectedZone)) zones.unshift(selectedZone);
-    return zones.map(zone => '<option value="'+esc(zone)+'"'+(zone === selectedZone ? ' selected' : '')+'>'+esc(labels.get(zone) || zone)+'</option>').join('');
+    return zones.map(zone => '<option value="'+esc(zone)+'"'+(zone === selectedZone ? ' selected' : '')+'>'+esc((String(state.locale || 'zh-CN').startsWith('zh') && labels.get(zone)) || zone)+'</option>').join('');
   }
   function authWarmupWeekdayValues(schedule) {
     const raw = authQuotaValue(schedule, 'weekdays');
@@ -5753,26 +5896,26 @@
     const frequency = String(card.querySelector('.auth-warmup-task-frequency').value || 'daily');
     const selectedDays = [...card.querySelector('.auth-warmup-task-weekdays').selectedOptions].map(option => option.value);
     const dayNames = {1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',0:'日'};
-    const weeklyLabel = ['1','2','3','4','5','6','0'].filter(day => selectedDays.includes(day)).map(day => dayNames[day]).join('、');
-    const when = frequency === 'weekly' ? (weeklyLabel ? '每周'+weeklyLabel : '每周') : (frequency === 'once' ? '单次' : '每天');
+    const weeklyLabel = ['1','2','3','4','5','6','0'].filter(day => selectedDays.includes(day)).map(day => t('周'+dayNames[day])).join(t('、'));
+    const when = frequency === 'weekly' ? (weeklyLabel || t('每周')) : t(frequency === 'once' ? '一次性' : '每天');
     const summary = card.querySelector('.auth-warmup-task-summary');
-    if (summary) summary.textContent = when+' · '+(authCount ? authCount+' 个认证' : '未选认证')+' · '+(modelCount ? modelCount+' 个模型' : '未选模型');
+    if (summary) summary.textContent = when+' · '+(authCount ? authCount+' '+t('个认证') : t('未选认证'))+' · '+(modelCount ? modelCount+' '+t('个模型') : t('未选模型'));
   }
   function renderAuthWarmupSchedules(schedules) {
     const list = $('authWarmupScheduleList');
     if (!list) return;
     if (!schedules.length) {
-      list.innerHTML = '<div class="auth-warmup-empty"><strong>还没有定时预热任务</strong><span>添加任务后，分别选择每天、每周或单次、认证文件、模型和目标时间。</span></div>';
+      list.innerHTML = '<div class="auth-warmup-empty"><strong>还没有定时预热任务</strong><span>添加任务后，分别选择每天、每周或一次性、认证文件、模型和目标时间。</span></div>';
       return;
     }
     list.innerHTML = schedules.map((schedule, index) => {
       const id = String(authQuotaValue(schedule, 'id') || authWarmupID());
-      const name = authQuotaValue(schedule, 'name') || ('预热任务 '+(index + 1));
+      const name = authQuotaValue(schedule, 'name') || (t('预热任务')+' '+(index + 1));
       const auths = Array.isArray(authQuotaValue(schedule, 'auths')) ? authQuotaValue(schedule, 'auths') : [];
       const models = Array.isArray(authQuotaValue(schedule, 'models')) ? authQuotaValue(schedule, 'models') : [];
       const frequency = authQuotaValue(schedule, 'frequency') === 'weekly' ? 'weekly' : (authQuotaValue(schedule, 'frequency') === 'once' ? 'once' : 'daily');
       const weekday = authWarmupWeekdayValues(schedule);
-      return '<article class="auth-warmup-task" data-schedule-id="'+esc(id)+'"><header class="auth-warmup-task-head"><div class="auth-warmup-task-title"><span class="auth-warmup-task-index">'+String(index + 1).padStart(2, '0')+'</span><input class="auth-warmup-task-name" value="'+esc(name)+'" aria-label="任务名称"/></div><div class="auth-warmup-task-actions"><label class="auth-warmup-task-toggle" title="启用此任务"><input class="auth-warmup-task-enabled" type="checkbox" role="switch"'+(authQuotaValue(schedule, 'enabled') ? ' checked' : '')+'/><i aria-hidden="true"></i></label><button type="button" class="icon-btn auth-warmup-task-delete" title="删除任务" aria-label="删除 '+esc(name)+'"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 4.55h9.6M6.05 2.7h3.9v1.85H6.05z"/><path d="M5.05 4.55l.52 7.7c.05.66.58 1.15 1.24 1.15h2.38c.66 0 1.19-.49 1.24-1.15l.52-7.7"/><path d="M6.8 6.9v4.15M9.2 6.9v4.15"/></svg></button></div></header><div class="auth-warmup-task-grid"><label><span>频率</span><select class="auth-warmup-task-frequency" aria-label="频率">'+authWarmupFrequencyOptions(frequency)+'</select></label><label class="auth-warmup-task-weekday"><span>星期</span><select class="auth-warmup-task-weekdays" multiple data-empty-text="选择星期" aria-label="星期">'+authWarmupWeekdayOptions(weekday)+'</select></label><label><span>时区</span><select class="auth-warmup-task-timezone" aria-label="时区">'+authWarmupTimezoneOptions(authQuotaValue(schedule, 'timezone') || 'Asia/Shanghai')+'</select></label><label class="auth-warmup-task-datetime"><span>预热时间</span><input class="auth-warmup-task-warmup-datetime" type="datetime-local" value="'+esc(authWarmupDateTimeValue(schedule))+'"/></label><label class="auth-warmup-task-clock"><span>预热时间</span><input class="auth-warmup-task-warmup-at" type="time" value="'+esc(authQuotaValue(schedule, 'warmup_at') || '03:50')+'"/></label></div><div class="auth-warmup-task-pickers"><label><span>认证文件</span><select class="auth-warmup-task-auths" multiple data-empty-text="选择认证文件" aria-label="认证文件">'+authWarmupAuthSelectOptions(auths)+'</select></label><label><span>预热模型</span><select class="auth-warmup-task-models" multiple data-empty-text="选择预热模型" aria-label="预热模型">'+authWarmupSelectOptions(authWarmupModelOptions(models), models)+'</select></label></div><footer><span class="auth-warmup-task-summary"></span><span>每个认证仅预热一个支持的已选模型</span></footer></article>';
+      return '<article class="auth-warmup-task" data-schedule-id="'+esc(id)+'"><header class="auth-warmup-task-head"><div class="auth-warmup-task-title"><span class="auth-warmup-task-index">'+String(index + 1).padStart(2, '0')+'</span><input class="auth-warmup-task-name" value="'+esc(name)+'" aria-label="任务名称"/></div><div class="auth-warmup-task-actions"><label class="auth-warmup-task-toggle" title="启用此任务"><input class="auth-warmup-task-enabled" type="checkbox" role="switch"'+(authQuotaValue(schedule, 'enabled') ? ' checked' : '')+'/><i aria-hidden="true"></i></label><button type="button" class="icon-btn auth-warmup-task-delete" title="删除任务" aria-label="'+esc(t('删除')+' '+name)+'"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 4.55h9.6M6.05 2.7h3.9v1.85H6.05z"/><path d="M5.05 4.55l.52 7.7c.05.66.58 1.15 1.24 1.15h2.38c.66 0 1.19-.49 1.24-1.15l.52-7.7"/><path d="M6.8 6.9v4.15M9.2 6.9v4.15"/></svg></button></div></header><div class="auth-warmup-task-grid"><label><span>频率</span><select class="auth-warmup-task-frequency" aria-label="频率">'+authWarmupFrequencyOptions(frequency)+'</select></label><label class="auth-warmup-task-weekday"><span>星期</span><select class="auth-warmup-task-weekdays" multiple data-empty-text="选择星期" aria-label="星期">'+authWarmupWeekdayOptions(weekday)+'</select></label><label><span>时区</span><select class="auth-warmup-task-timezone" aria-label="时区">'+authWarmupTimezoneOptions(authQuotaValue(schedule, 'timezone') || 'Asia/Shanghai')+'</select></label><label class="auth-warmup-task-datetime"><span>预热时间</span><input class="auth-warmup-task-warmup-datetime" type="datetime-local" value="'+esc(authWarmupDateTimeValue(schedule))+'"/></label><label class="auth-warmup-task-clock"><span>预热时间</span><input class="auth-warmup-task-warmup-at" type="time" value="'+esc(authQuotaValue(schedule, 'warmup_at') || '03:50')+'"/></label></div><div class="auth-warmup-task-pickers"><label><span>认证文件</span><select class="auth-warmup-task-auths" multiple data-empty-text="选择认证文件" aria-label="认证文件">'+authWarmupAuthSelectOptions(auths)+'</select></label><label><span>预热模型</span><select class="auth-warmup-task-models" multiple data-empty-text="选择预热模型" aria-label="预热模型">'+authWarmupSelectOptions(authWarmupModelOptions(models), models)+'</select></label></div><footer><span class="auth-warmup-task-summary"></span><span>每个认证仅预热一个支持的已选模型</span></footer></article>';
     }).join('');
     initCustomControls(list);
     list.querySelectorAll('.auth-warmup-task').forEach(card => {
@@ -5782,7 +5925,7 @@
     });
   }
   function newAuthWarmupSchedule() {
-    return { id: authWarmupID(), name: '预热任务', enabled: true, frequency: 'daily', weekdays: [1], timezone: 'Asia/Shanghai', warmup_at: '03:50', warmup_on: authWarmupToday(), auths: [], models: [] };
+    return { id: authWarmupID(), name: t('预热任务'), enabled: true, frequency: 'daily', weekdays: [1], timezone: 'Asia/Shanghai', warmup_at: '03:50', warmup_on: authWarmupToday(), auths: [], models: [] };
   }
   function applyAuthWarmupSettings(settings) {
     setAuthWarmupField('authWarmupMaxParallel', authQuotaValue(settings, 'max_parallel') || 10);
@@ -5961,7 +6104,7 @@
     await reload();
     loadModelCatalog().catch(error => {
       const status = $('modelCatalogStatus');
-      if (status) status.textContent = '模型目录加载失败：' + (error && error.message ? error.message : error) + '。已连接到 CPA，可稍后重试。';
+      if (status) status.textContent = t('模型目录加载失败：') + t(error && error.message ? error.message : error) + t('。已连接到 CPA，可稍后重试。');
     });
   }
 
@@ -6040,7 +6183,7 @@
   function openDeleteKeyModal(id) {
     const key = state.keys.find(item => item.id === id);
     state.deleteKeyID = id;
-    $('deleteKeyTarget').textContent = '即将删除：' + (key && (key.label || key.id) || id);
+    $('deleteKeyTarget').textContent = t('即将删除：') + (key && (key.label || key.id) || id);
     const modal = $('deleteKeyModal');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
@@ -6492,7 +6635,7 @@
     } catch (e) { flash(e.message, false); }
   });
   $('btnLoadModelCatalog').addEventListener('click', async () => {
-    try { await loadModelCatalog(); flash(state.modelCatalogError ? '已加载代理模型，价格目录暂不可用' : '已加载全部模型并同步新价格规则', true); } catch (e) { $('modelCatalogStatus').textContent = '加载失败：' + e.message; flash(e.message, false); }
+    try { await loadModelCatalog(); flash(state.modelCatalogError ? '已加载代理模型，价格目录暂不可用' : '已加载全部模型并同步新价格规则', true); } catch (e) { $('modelCatalogStatus').textContent = t('加载失败：') + t(e.message); flash(e.message, false); }
   });
   $('btnOpenCreateKey').addEventListener('click', () => openKeyModal('create'));
   $('btnResetAllKeySpend').addEventListener('click', () => {
@@ -6616,7 +6759,7 @@
     else setKeyExpiryPreset('never', false);
   });
   $('btnLoadModelPrices').addEventListener('click', async () => {
-    try { await loadModelPrices(); } catch (e) { $('modelPriceStatus').textContent = '同步失败：' + e.message; flash(e.message, false); }
+    try { await loadModelPrices(); } catch (e) { $('modelPriceStatus').textContent = t('同步失败：') + t(e.message); flash(e.message, false); }
   });
   $('priceModelPicker').addEventListener('change', event => loadModelPrice(event.target.value));
   $('priceBillingMode').addEventListener('change', syncPriceBillingFields);
